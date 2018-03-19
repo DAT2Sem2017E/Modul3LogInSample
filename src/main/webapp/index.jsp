@@ -46,6 +46,10 @@
                 </td>
             </tr>
         </table>
+        
+        <!-- write 'command....&t=2' to send 2 commands to the FrontController with the link -->
+        <a href="FrontController?command=help">Få hjælp til din bestilling</a>
+        
         <% String error = (String) request.getAttribute( "error");
            if ( error != null) { %>
            <H2>Error!!</h2>
