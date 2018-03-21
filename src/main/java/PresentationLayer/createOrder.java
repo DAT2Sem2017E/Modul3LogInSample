@@ -7,9 +7,7 @@ package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.OrderEntity;
 import FunctionLayer.User;
-import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,11 +16,18 @@ import javax.servlet.http.HttpSession;
  *
  * @author juanni420
  */
-public class Customer extends Command {
+public class createOrder extends Command{
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        return "customerpage";
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        int userId = user.getId();
+        int length = Integer.parseInt(request.getParameter("length"));
+        int width = Integer.parseInt(request.getParameter("width"));
+        int height = Integer.parseInt(request.getParameter("height"));
+        LogicFacade.createOrder(width, length, height, userId);
+        return "order";
     }
-
+    
 }

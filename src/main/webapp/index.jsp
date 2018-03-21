@@ -23,10 +23,10 @@
                     <form name="login" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="login">
                         Email:<br>
-                        <input type="text" name="email" value="someone@nowhere.com">
+                        <input type="text" name="email" value="jens@somewhere.com">
                         <br>
                         Password:<br>
-                        <input type="password" name="password" value="sesam">
+                        <input type="password" name="password" value="jensen">
                         <br>
                         <input type="submit" value="Submit">
                     </form>
@@ -51,11 +51,11 @@
         </table>
             <%
         }else {
-            out.println("Du er logget ind og klar til at bestille Lego!.");
+            out.println("<p>Du er logget ind og klar til at bestille Lego!</p>");
 }%>
         
         <!-- write 'command....&t=2' to send 2 commands to the FrontController with the link -->
-        <a href="FrontController?command=help">Få hjælp til din bestilling</a>
+        <a class="button" href="FrontController?command=help"><p>Få hjælp til din bestilling</p></a>
         
         <% String error = (String) request.getAttribute( "error");
            if ( error != null) { %>

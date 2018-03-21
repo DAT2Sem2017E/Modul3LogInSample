@@ -19,8 +19,8 @@
         <table>
             <tr><td>Order</td>
                 <td>
-                    <form name="order" action="FrontController" method="POST">
-                        <input type="hidden" name="command" value="order">
+                    <form name="createOrder" action="FrontController" method="POST">
+                        <input type="hidden" name="command" value="createOrder">
                         Length:<br>
                         <input type="number" name="length">
                         <br> 
@@ -28,7 +28,7 @@
                         <input type="number" name="width">
                         <br>
                         Height:<br>
-                        <input type="number" name="hegiht">
+                        <input type="number" name="height">
                         <br>
                        
                         <input type="submit" value="Submit">

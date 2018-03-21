@@ -10,8 +10,11 @@
         <a href="index.jsp">Front Page</a>
 
         <% if (session.getAttribute("user") != null) {
-                out.println("<a href='FrontController?command=order'>Order LegoHouse</a>");
-                out.println("<a href='FrontController?command=" + session.getAttribute("role") + "'>" + session.getAttribute("role") + "</a>");
+                if (session.getAttribute("role").equals("customer")) {
+                    out.println("<a href='FrontController?command=order'>Order LegoHouse</a>");
+                }
+                out.println("<a href='FrontController?command=" + session.getAttribute("role")
+                        + "'>" + session.getAttribute("role") + "</a>");
                 out.println("<a href='./logOut'>Log Out</a>");
             }%>
 

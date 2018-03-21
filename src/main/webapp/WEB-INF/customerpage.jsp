@@ -4,6 +4,8 @@
     Author     : kasper
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="FunctionLayer.OrderEntity"%>
 <%@page import="FunctionLayer.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,11 +17,10 @@
     </head>
     <body>
         <%@include file="nav.jsp" %>
-        <% User user = (User) session.getAttribute("user"); %>
+        <% User user = (User) session.getAttribute("user");%>
         <h1>Hello <%= user.getEmail()%> </h1>
-        You are now logged in as a customer of our wonderful site.
-        
-        <br>
-        <a href="FrontController?command=order">Klik her får at komme til bestillingssiden</a>
+        <p>You are now logged in as a customer of our wonderful site.</p>
+        <a class="button" href="FrontController?command=order"><p>Klik her får at komme til bestillingssiden</p></a>
+        <a class="button" href="FrontController?command=orders"><p>Klik her får at se dine bestillinger</p></a>
     </body>
 </html>

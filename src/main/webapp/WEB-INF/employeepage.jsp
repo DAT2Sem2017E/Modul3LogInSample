@@ -17,6 +17,8 @@
         <%@include file="nav.jsp" %>
         <% User user = (User) session.getAttribute("user"); %>
         <h1>Hello <%= user.getEmail()%> </h1>
-        You are now logged in as a EMPLOYEE of our wonderful site.
+        <p>You are now logged in as a EMPLOYEE of our wonderful site.</p>
+        <a class="button" href="FrontController?command=emporders"><p>Klik her får at se alle bestillinger</p></a>
+        
     </body>
 </html>
