@@ -10,11 +10,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Welcome page</title>
+        <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h1>Welcome to Sem 2</h1>
-        
-        <table>
+        <%@include file="WEB-INF/nav.jsp" %>
+        <h1>Welcome to LegoHouse</h1>
+        <% if(session.getAttribute("user") == null){
+            %>
+            <table>
             <tr><td>Login</td>
                 <td>
                     <form name="login" action="FrontController" method="POST">
@@ -46,6 +49,10 @@
                 </td>
             </tr>
         </table>
+            <%
+        }else {
+            out.println("Du er logget ind og klar til at bestille Lego!.");
+}%>
         
         <!-- write 'command....&t=2' to send 2 commands to the FrontController with the link -->
         <a href="FrontController?command=help">Få hjælp til din bestilling</a>
