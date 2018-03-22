@@ -59,38 +59,34 @@ public class LogicFacade {
         if (remaining == 0) {
             int numBricks = sidea / Twox4.getLength();
             if (numBricks % 2 != 0) {
-                numBricks++;
-                //here i dont run numBricks*2 because i just add equal parts 2x2 and 2x4 to the list
-                //if i only wanted for 1 side i would've said numBricks/2
-                for (int i = 0; i < numBricks / 2; i++) {
+                for (int i = 0; i < numBricks - 1; i++) {
                     brickList.add(Twox4);
-                    brickList.add(Twox2);
                 }
+                brickList.add(Twox2);
+                brickList.add(Twox2);
                 sidesList.add(new Side(brickList, "sideA"));
                 brickList = new ArrayList<Brick>();
-                for (int i = 0; i < numBricks / 2; i++) {
+                for (int i = 0; i < numBricks - 1; i++) {
                     brickList.add(Twox4);
-                    brickList.add(Twox2);
                 }
+                brickList.add(Twox2);
+                brickList.add(Twox2);
                 sidesList.add(new Side(brickList, "sideC"));
                 brickList = new ArrayList<Brick>();
             } else {
-                //jeg deler antallet af klodser op i 3 og smider så 2/3 dele af 2x4 i listen
-                //og 1/3 dele af 2x2 i listen
-                int numBricks2 = numBricks / 3;
-                for (int i = 0; i < numBricks2 * 2; i++) {
+                int numBricks2 = numBricks / 2;
+                for (int i = 0; i < numBricks2; i++) {
                     brickList.add(Twox4);
                 }
-                for (int i = 0; i < numBricks2; i++) {
+                for (int i = 0; i < numBricks2 * 2; i++) {
                     brickList.add(Twox2);
                 }
-                //og jeg gør det igen for den anden side af huset
                 sidesList.add(new Side(brickList, "sideA"));
                 brickList = new ArrayList<Brick>();
-                for (int i = 0; i < numBricks2 * 2; i++) {
+                for (int i = 0; i < numBricks2; i++) {
                     brickList.add(Twox4);
                 }
-                for (int i = 0; i < numBricks2; i++) {
+                for (int i = 0; i < numBricks2 * 2; i++) {
                     brickList.add(Twox2);
                 }
                 sidesList.add(new Side(brickList, "sideC"));
@@ -98,8 +94,8 @@ public class LogicFacade {
             }
 
         } else if (remaining == 1) {
-            brickList.add(Onex2);
             int numBricks = sidea / Twox4.getLength();
+            brickList.add(Onex2);
             for (int i = 0; i < numBricks; i++) {
                 brickList.add(Twox4);
             }
@@ -114,8 +110,8 @@ public class LogicFacade {
             brickList = new ArrayList<Brick>();
 
         } else if (remaining == 2) {
-            brickList.add(Twox2);
             int numBricks = sidea / Twox4.getLength();
+            brickList.add(Twox2);
             for (int i = 0; i < numBricks; i++) {
                 brickList.add(Twox4);
             }
@@ -130,10 +126,10 @@ public class LogicFacade {
             brickList = new ArrayList<Brick>();
 
         } else if (remaining == 3) {
+            int numBricks = sidea / Twox4.getLength();
             brickList.add(Onex2);
             brickList.add(Twox2);
-            int numBricks = sidea / Twox4.getLength();
-            for (int i = 0; i < numBricks * 2; i++) {
+            for (int i = 0; i < numBricks; i++) {
                 brickList.add(Twox4);
             }
             sidesList.add(new Side(brickList, "sideA"));
@@ -141,7 +137,7 @@ public class LogicFacade {
 
             brickList.add(Onex2);
             brickList.add(Twox2);
-            for (int i = 0; i < numBricks * 2; i++) {
+            for (int i = 0; i < numBricks; i++) {
                 brickList.add(Twox4);
             }
             sidesList.add(new Side(brickList, "sideC"));
@@ -150,94 +146,130 @@ public class LogicFacade {
 
         remaining = sideb % Twox4.getLength();
         if (remaining == 0) {
-            int numBricks = sidea / Twox4.getLength();
+            int numBricks = sideb / Twox4.getLength();
             if (numBricks % 2 != 0) {
-                numBricks++;
-                //here i dont run numBricks*2 because i just add equal parts 2x2 and 2x4 to the list
-                //if i only wanted for 1 side i would've said numBricks/2
-                for (int i = 0; i < numBricks / 2; i++) {
-                    brickList.add(Twox4);
+                if (numBricks >= 3) {
+                    for (int i = 0; i < numBricks - 1; i++) {
+                        brickList.add(Twox4);
+                    }
                     brickList.add(Twox2);
-                }
-                sidesList.add(new Side(brickList, "sideA"));
-                brickList = new ArrayList<Brick>();
-                for (int i = 0; i < numBricks / 2; i++) {
-                    brickList.add(Twox4);
                     brickList.add(Twox2);
+                    sidesList.add(new Side(brickList, "sideB"));
+                    brickList = new ArrayList<Brick>();
+                    for (int i = 0; i < numBricks - 1; i++) {
+                        brickList.add(Twox4);
+                    }
+                    brickList.add(Twox2);
+                    brickList.add(Twox2);
+                    sidesList.add(new Side(brickList, "sideD"));
+                    brickList = new ArrayList<Brick>();
+                } else {
+                    numBricks = sideb / Twox2.getLength();
+                    for (int i = 0; i < numBricks - 1; i++) {
+                        brickList.add(Twox2);
+                    }
+                    brickList.add(Onex2);
+                    brickList.add(Onex2);
+                    sidesList.add(new Side(brickList, "sideB"));
+                    brickList = new ArrayList<Brick>();
+                    for (int i = 0; i < numBricks - 1; i++) {
+                        brickList.add(Twox2);
+                    }
+                    brickList.add(Onex2);
+                    sidesList.add(new Side(brickList, "sideD"));
+                    brickList = new ArrayList<Brick>();
                 }
-                sidesList.add(new Side(brickList, "sideC"));
-                brickList = new ArrayList<Brick>();
+
             } else {
-                //jeg deler antallet af klodser op i 3 og smider så 2/3 dele af 2x4 i listen
-                //og 1/3 dele af 2x2 i listen
-                int numBricks2 = numBricks / 3;
-                for (int i = 0; i < numBricks2 * 2; i++) {
-                    brickList.add(Twox4);
+                if (numBricks <= 2) {
+                    numBricks = sideb / Twox2.getLength();
+                    for (int i = 0; i < numBricks / 2; i++) {
+                        brickList.add(Twox2);
+                    }
+                    for (int i = 0; i < numBricks; i++) {
+                        brickList.add(Onex2);
+                    }
+                    sidesList.add(new Side(brickList, "sideB"));
+                    brickList = new ArrayList<Brick>();
+                    for (int i = 0; i < numBricks / 2; i++) {
+                        brickList.add(Twox2);
+                    }
+                    for (int i = 0; i < numBricks; i++) {
+                        brickList.add(Onex2);
+                    }
+                    sidesList.add(new Side(brickList, "sideD"));
+                    brickList = new ArrayList<Brick>();
+
+                } else {
+                    int numBricks2 = numBricks / 2;
+                    for (int i = 0; i < numBricks2; i++) {
+                        brickList.add(Twox4);
+                    }
+                    for (int i = 0; i < numBricks2 * 2; i++) {
+                        brickList.add(Twox2);
+                    }
+                    sidesList.add(new Side(brickList, "sideB"));
+                    brickList = new ArrayList<Brick>();
+                    for (int i = 0; i < numBricks2; i++) {
+                        brickList.add(Twox4);
+                    }
+                    for (int i = 0; i < numBricks2 * 2; i++) {
+                        brickList.add(Twox2);
+                    }
+                    sidesList.add(new Side(brickList, "sideD"));
+                    brickList = new ArrayList<Brick>();
                 }
-                for (int i = 0; i < numBricks2; i++) {
-                    brickList.add(Twox2);
-                }
-                //og jeg gør det igen for den anden side af huset
-                sidesList.add(new Side(brickList, "sideA"));
-                brickList = new ArrayList<Brick>();
-                for (int i = 0; i < numBricks2 * 2; i++) {
-                    brickList.add(Twox4);
-                }
-                for (int i = 0; i < numBricks2; i++) {
-                    brickList.add(Twox2);
-                }
-                sidesList.add(new Side(brickList, "sideC"));
-                brickList = new ArrayList<Brick>();
+
             }
 
         } else if (remaining == 1) {
+            int numBricks = sideb / Twox4.getLength();
             brickList.add(Onex2);
-            int numBricks = sidea / Twox4.getLength();
             for (int i = 0; i < numBricks; i++) {
                 brickList.add(Twox4);
             }
-            sidesList.add(new Side(brickList, "sideA"));
+            sidesList.add(new Side(brickList, "sideB"));
             brickList = new ArrayList<Brick>();
 
             brickList.add(Onex2);
             for (int i = 0; i < numBricks; i++) {
                 brickList.add(Twox4);
             }
-            sidesList.add(new Side(brickList, "sideC"));
+            sidesList.add(new Side(brickList, "sideD"));
             brickList = new ArrayList<Brick>();
 
         } else if (remaining == 2) {
+            int numBricks = sideb / Twox4.getLength();
             brickList.add(Twox2);
-            int numBricks = sidea / Twox4.getLength();
             for (int i = 0; i < numBricks; i++) {
                 brickList.add(Twox4);
             }
-            sidesList.add(new Side(brickList, "sideA"));
+            sidesList.add(new Side(brickList, "sideB"));
             brickList = new ArrayList<Brick>();
 
             brickList.add(Twox2);
             for (int i = 0; i < numBricks; i++) {
                 brickList.add(Twox4);
             }
-            sidesList.add(new Side(brickList, "sideC"));
+            sidesList.add(new Side(brickList, "sideD"));
             brickList = new ArrayList<Brick>();
 
         } else if (remaining == 3) {
+            int numBricks = sideb / Twox4.getLength();
             brickList.add(Onex2);
             brickList.add(Twox2);
-            int numBricks = sidea / Twox4.getLength();
-            for (int i = 0; i < numBricks * 2; i++) {
+            for (int i = 0; i < numBricks; i++) {
                 brickList.add(Twox4);
             }
-            sidesList.add(new Side(brickList, "sideA"));
+            sidesList.add(new Side(brickList, "sideB"));
             brickList = new ArrayList<Brick>();
 
             brickList.add(Onex2);
             brickList.add(Twox2);
-            for (int i = 0; i < numBricks * 2; i++) {
+            for (int i = 0; i < numBricks; i++) {
                 brickList.add(Twox4);
             }
-            sidesList.add(new Side(brickList, "sideC"));
+            sidesList.add(new Side(brickList, "sideD"));
             brickList = new ArrayList<Brick>();
         }
 

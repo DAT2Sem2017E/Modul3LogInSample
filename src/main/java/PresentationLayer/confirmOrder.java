@@ -5,8 +5,11 @@
  */
 package PresentationLayer;
 
+import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.OrderEntity;
+import FunctionLayer.Side;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,7 +28,11 @@ public class confirmOrder extends Command{
         int height = Integer.parseInt(request.getParameter("height"));
         OrderEntity singleOrder = new OrderEntity(height, length, width);
         session.setAttribute("singleOrder", singleOrder);
+        
         //her skal der også udregnes lego klodser og give listen med i session
+        ArrayList<Side> sidesList = LogicFacade.getBricks(width, length, height);
+        session.setAttribute("sideList", sidesList);
+        
         return "confirmOrder";
     }
     
