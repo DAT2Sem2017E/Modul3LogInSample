@@ -5,6 +5,7 @@
  */
 package PresentationLayer;
 
+import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.OrderEntity;
 import javax.servlet.http.HttpServletRequest;
@@ -15,18 +16,20 @@ import javax.servlet.http.HttpSession;
  *
  * @author juanni420
  */
-public class confirmOrder extends Command{
+public class viewPieces extends Command{
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+        int orderId = Integer.parseInt(request.getParameter("orderId"));
         HttpSession session = request.getSession();
-        int length = Integer.parseInt(request.getParameter("length"));
-        int width = Integer.parseInt(request.getParameter("width"));
-        int height = Integer.parseInt(request.getParameter("height"));
-        OrderEntity singleOrder = new OrderEntity(height, length, width);
-        session.setAttribute("singleOrder", singleOrder);
-        //her skal der også udregnes lego klodser og give listen med i session
-        return "confirmOrder";
+        OrderEntity order = LogicFacade.getOrder(orderId);
+        int width = order.getWidth();
+        int length = order.getLength();
+        int height = order.getHeight();
+        //tmp. Change the order above to calculate the pieces and then set the list of pieces
+        //as an attribute in the session
+        session.setAttribute("piecesOrder", order);
+        return "viewPieces";
     }
     
 }

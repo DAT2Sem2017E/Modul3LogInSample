@@ -72,6 +72,27 @@ public class OrderMapper {
         }
     }
 
+    public static OrderEntity getOrder(int orderId) throws LoginSampleException {
+        OrderEntity order = null;
+        try {
+            Connection con = Connector.connection();
+            String SQL = "SELECT Orders.Order_Id, Orders.Length, Orders.Width, "
+                    + "Orders.Height FROM LegoDB.Orders where Orders.Order_Id =?;";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1, orderId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int length = rs.getInt("length");
+                int width = rs.getInt("width");
+                int height = rs.getInt("height");
+                order = new OrderEntity(height, length, width);
+            }
+            return order;
+        } catch (ClassNotFoundException | SQLException ex) {
+            throw new LoginSampleException(ex.getMessage());
+        }
+    }
+
     public static boolean changeStatus(int orderId) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
@@ -85,8 +106,8 @@ public class OrderMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
-    
-    public static boolean createOrder(int width, int length, int height, int userId) throws LoginSampleException{
+
+    public static boolean createOrder(int width, int length, int height, int userId) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO Orders (length, width, height, user_id) VALUES (?, ?, ?, ?)";

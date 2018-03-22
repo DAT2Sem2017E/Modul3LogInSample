@@ -21,10 +21,10 @@
                     <form name="confirmOrder" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="confirmOrder">
                         Length:<br>
-                        <input style="width: 170px;" type="number" name="length" min="10" max="100" step="1" required>
+                        <input style="width: 170px;" type="number" name="length" min="8" max="100" step="1" required>
                         <br> 
                         Width:<br>
-                        <input style="width: 170px;" type="number" name="width" min="10" max="100" step="1" required>
+                        <input style="width: 170px;" type="number" name="width" min="4" max="100" step="1" required>
                         <br>
                         Height:<br>
                         <input style="width: 170px;" type="number" name="height" min="4" max="15" step="1" required>
