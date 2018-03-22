@@ -28,15 +28,11 @@ public class OrderEntity {
         this.email = email;
     }
 
-    public String getEmail() {
-        return email;
+    public OrderEntity(int height, int length, int width) {
+        this.height = height;
+        this.length = length;
+        this.width = width;
     }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
-    
 
     private int id, height, length, width;
     private String status, email;
@@ -81,13 +77,17 @@ public class OrderEntity {
         this.status = status;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "OrderEntity{" + "id=" + id + ", height=" + height + ", length=" + length + ", width=" + width + ", status=" + status + ", email=" + email + '}';
     }
 
-
-
-    
-    
 }
