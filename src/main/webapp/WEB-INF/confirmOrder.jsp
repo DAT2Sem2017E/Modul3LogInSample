@@ -25,7 +25,7 @@
             <p class="center"><b>Order</b></p>
             <%out.println("<p class='center'><b>Length:</b> " + order.getLength()
                         + ", <b>Width:</b> " + order.getWidth() + ", <b>Height:</b> " + order.getHeight() + "</p>");%>
-                        <h2 class="top center">Styk liste</h2>           
+            <h2 class="top center">Styk liste</h2>           
             <table>
                 <tr>
                     <td><b>Side</b></td>
@@ -57,7 +57,7 @@
                         out.println("<td>" + brick2 + "</td>");
                         out.println("<td>" + brick3 + "</td>");
                         out.println("<td></td>");
-                        out.println("<td></td></tr>");
+                        out.println("<td></td>");
 
                     }
                 %>
