@@ -19,12 +19,14 @@
     <body>
         <%@include file="nav.jsp" %>
         <% ArrayList<OrderEntity> ordersList = (ArrayList) session.getAttribute("orders");%>
-        <h1>Here you can view your orders</h1>
+        <h1 class="center">Here you can view your orders</h1>
+        <div class="wrapper">
         <% for (OrderEntity order : ordersList) {
                 out.println("<p><b>Order Id:</b> " + order.getId() + ", <b>Length:</b> " + order.getLength()
                         + ", <b>Width:</b> " + order.getWidth() + ", <b>Height:</b> " + order.getHeight()
                         + ", <b>Status:</b> " + order.getStatus() + "</p>");
             }
         %>
+        </div>
     </body>
 </html>

@@ -18,7 +18,7 @@
                 out.println("<a href='FrontController?command=logout'>Log Out</a>");
             }
         else{
-            out.println("<a href='FrontController?command=login'>Login</a>");
+            out.println("<a href='FrontController?command=loginpage'>Login</a>");
 }%>
 
         <a href="FrontController?command=help">Help</a>

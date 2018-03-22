@@ -18,23 +18,25 @@
         <%@include file="nav.jsp" %>
         <% ArrayList<OrderEntity> ordersList = (ArrayList) session.getAttribute("emporders");
         %>
-        <h1>Here you can view all orders</h1>                
-        <% for (OrderEntity order : ordersList) {
-                out.println("<p><b>Order Id:</b> " + order.getId() + ", <b>Length:</b> " + order.getLength()
-                        + ", <b>Width:</b> " + order.getWidth() + ", <b>Height:</b> " + order.getHeight()
-                        + ", <b>User Email:</b> " + order.getEmail() + ", <b>Status:</b> " + order.getStatus() + "</p>");
-            }
-        %>
-        <h2>Change order status below</h2>
-        <form name="changeStatus" style="margin-left: 1%" action='FrontController' method='post'>
-            <input type="hidden" name="command" value="changeStatus">
-            <select name="orderId">
-                <% for (OrderEntity order : ordersList) {
-                        out.println("<option value='" + order.getId() + "'>" + "Order id: " + order.getId() + "</option>");
-                    }%>
-            </select>
-            <input type="submit" value="Change Status to Sent">
-        </form>
-        <a class="button" href="FrontController?command=emporders"><p>Refresh</p></a>
+        <h1 class="top center">Here you can view all orders</h1>                
+        <div class="wrapper">
+            <% for (OrderEntity order : ordersList) {
+                    out.println("<p><b>Order Id:</b> " + order.getId() + ", <b>Length:</b> " + order.getLength()
+                            + ", <b>Width:</b> " + order.getWidth() + ", <b>Height:</b> " + order.getHeight()
+                            + ", <b>User Email:</b> " + order.getEmail() + ", <b>Status:</b> " + order.getStatus() + "</p>");
+                }
+            %>
+            <h2 class="center">Change order status below</h2>
+            <form name="changeStatus" class="center" action='FrontController' method='post'>
+                <input type="hidden" name="command" value="changeStatus">
+                <select name="orderId">
+                    <% for (OrderEntity order : ordersList) {
+                            out.println("<option value='" + order.getId() + "'>" + "Order id: " + order.getId() + "</option>");
+                        }%>
+                </select>
+                <input type="submit" value="Change Status to Sent">
+            </form>
+            <a class="button center" href="FrontController?command=emporders">Refresh</a>
+        </div>
     </body>
 </html>

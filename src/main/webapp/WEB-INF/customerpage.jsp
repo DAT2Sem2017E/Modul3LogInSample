@@ -18,9 +18,11 @@
     <body>
         <%@include file="nav.jsp" %>
         <% User user = (User) session.getAttribute("user");%>
-        <h1>Hello <%= user.getEmail()%> </h1>
-        <p>You are now logged in as a customer of our wonderful site.</p>
-        <a class="button" href="FrontController?command=order"><p>Klik her får at komme til bestillingssiden</p></a>
-        <a class="button" href="FrontController?command=orders"><p>Klik her får at se dine bestillinger</p></a>
+        <h1 class="center top">Hello <%= user.getEmail()%> </h1>
+        <div class="wrapper">
+            <p class="center top">You are now logged in as a customer of our wonderful site.</p>
+            <a class="button center" href="FrontController?command=order">Klik her får at komme til bestillingssiden</a>
+            <a class="button center" href="FrontController?command=orders">Klik her får at se dine bestillinger</a>
+        </div>
     </body>
 </html>

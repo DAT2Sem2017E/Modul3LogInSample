@@ -14,17 +14,18 @@
     </head>
     <body>
         <%@include file="WEB-INF/nav.jsp" %>
-        <h1>Welcome to LegoHouse</h1>
-        <p>This is the front page of my Lego House site.</p>
-        
-        <!-- write 'command....&t=2' to send 2 commands to the FrontController with the link -->
-        <a class="button" href="FrontController?command=help"><p>Få hjælp til din bestilling</p></a>
-        
-        <% String error = (String) request.getAttribute( "error");
-           if ( error != null) { %>
-           <H2>Error!!</h2>
-           <p><%= error %>
-        <% }
-        %>
+        <h1 class="center top">Welcome to LegoHouse</h1>
+        <div class="wrapper">
+            <p class="center top">This is the front page of my Lego House site.</p>
+            <!-- write 'command....&t=2' to send 2 commands to the FrontController with the link -->
+            <a class="button center" href="FrontController?command=help">Få hjælp til din bestilling</a>
+
+            <% String error = (String) request.getAttribute("error");
+            if (error != null) {%>
+            <H2 class="center">Error!!</h2>
+            <p><%= error%>
+                <% }
+                %>
+        </div>
     </body>
 </html>

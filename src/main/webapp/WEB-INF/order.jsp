@@ -14,21 +14,20 @@
     </head>
     <body>
         <%@include file="nav.jsp" %>
-        <h1>Welcome to the order page!</h1>
-        
-        <table>
+        <h1 class="center top">Welcome to the order page!</h1>
+        <table style="max-width: 40%; margin: auto;">
             <tr><td>Order</td>
                 <td>
                     <form name="createOrder" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="createOrder">
                         Length:<br>
-                        <input type="number" name="length" required>
+                        <input style="width: 170px;" type="number" name="length" min="10" max="100" required>
                         <br> 
                         Width:<br>
-                        <input type="number" name="width" required>
+                        <input style="width: 170px;" type="number" name="width" min="10" max="100" required>
                         <br>
                         Height:<br>
-                        <input type="number" name="height" required>
+                        <input style="width: 170px;" type="number" name="height" min="4" max="15" required>
                         <br>
                        
                         <input type="submit" value="Submit" required>

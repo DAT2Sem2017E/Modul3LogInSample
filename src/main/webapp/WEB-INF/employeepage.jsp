@@ -15,10 +15,12 @@
     </head>
     <body>
         <%@include file="nav.jsp" %>
-        <% User user = (User) session.getAttribute("user"); %>
-        <h1>Hello <%= user.getEmail()%> </h1>
-        <p>You are now logged in as a EMPLOYEE of our wonderful site.</p>
-        <a class="button" href="FrontController?command=emporders"><p>Klik her får at se alle bestillinger</p></a>
-        
+        <% User user = (User) session.getAttribute("user");%>
+        <h1 class="top center">Hello <%= user.getEmail()%> </h1>
+        <div class="wrapper">
+            <p class="center top">You are now logged in as a EMPLOYEE of our wonderful site.</p>
+            <a class="button center" href="FrontController?command=emporders">Klik her får at se alle bestillinger</a>
+        </div>
+
     </body>
 </html>

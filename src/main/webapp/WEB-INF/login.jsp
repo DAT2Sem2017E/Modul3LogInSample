@@ -13,7 +13,8 @@
     </head>
     <body>
         <%@include file="nav.jsp" %>
-        <h1>Login Page</h1>
+        <div class="top">
+            <h1 class="center">Login Page</h1>
         <% if (session.getAttribute("user") == null) {
         %>
         <table>
@@ -54,6 +55,7 @@
             }%>
 
         <!-- write 'command....&t=2' to send 2 commands to the FrontController with the link -->
-        <a class="button" href="FrontController?command=help"><p>Få hjælp til din bestilling</p></a>
+        <a class="button center" href="FrontController?command=help">Få hjælp til din bestilling</a>
+        </div>
     </body>
 </html>

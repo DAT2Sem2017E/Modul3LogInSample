@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author juanni420
  */
-public class login extends Command{
+public class loginPage extends Command{
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {

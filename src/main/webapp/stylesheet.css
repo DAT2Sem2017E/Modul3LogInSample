@@ -23,11 +23,14 @@ body{
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    min-width: 40%;
+    max-width: 80%;
+    margin:auto;
+    margin-bottom: 1%;
 }
 
 td, th {
-    border: 1px solid #dddddd;
+    border: 1px dashed black;
     text-align: left;
     padding: 8px;
 }
@@ -59,13 +62,13 @@ a {
 }
 
 p {
-    margin-left: 1%;
     margin-top: 0;
     margin-bottom: 0;
+    max-width: 80%;
 }
 
 h1, h2 {
-    margin-left: 1%;
+    max-width: 60%; text-align: center; margin-top: 4%;
 }
 
 .button {
@@ -75,6 +78,27 @@ h1, h2 {
     background: #dddddd;
     text-align: center;
     color: black;
-    margin-left: 1%;
     border: 1px grey solid;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.wrapper{
+    min-width: 40%;
+    max-width: 70%;
+    min-height: 20%;
+    margin: auto;
+    margin-top: 1%;
+    border: black 2px dashed;
+    padding: 5px;
+}
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.top{
+    margin-top: 4%;
 }
