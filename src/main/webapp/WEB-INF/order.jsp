@@ -22,16 +22,16 @@
                     <form name="createOrder" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="createOrder">
                         Length:<br>
-                        <input type="number" name="length">
+                        <input type="number" name="length" required>
                         <br> 
                         Width:<br>
-                        <input type="number" name="width">
+                        <input type="number" name="width" required>
                         <br>
                         Height:<br>
-                        <input type="number" name="height">
+                        <input type="number" name="height" required>
                         <br>
                        
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Submit" required>
                     </form>
                 </td>
             </tr>

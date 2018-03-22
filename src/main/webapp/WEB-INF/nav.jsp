@@ -15,8 +15,11 @@
                 }
                 out.println("<a href='FrontController?command=" + session.getAttribute("role")
                         + "'>" + session.getAttribute("role") + "</a>");
-                out.println("<a href='./logOut'>Log Out</a>");
-            }%>
+                out.println("<a href='FrontController?command=logout'>Log Out</a>");
+            }
+        else{
+            out.println("<a href='FrontController?command=login'>Login</a>");
+}%>
 
         <a href="FrontController?command=help">Help</a>
 
