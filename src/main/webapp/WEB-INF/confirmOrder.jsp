@@ -22,26 +22,60 @@
             ArrayList<Side> sideList = (ArrayList) session.getAttribute("sideList");%>
         <h1 class="center">Confirm Order</h1>
         <div class="wrapper">
-            <%out.println("<p><b>Length:</b> " + order.getLength()
+            <p class="center"><b>Order</b></p>
+            <%out.println("<p class='center'><b>Length:</b> " + order.getLength()
                         + ", <b>Width:</b> " + order.getWidth() + ", <b>Height:</b> " + order.getHeight() + "</p>");%>
+                        <h2 class="top center">Styk liste</h2>           
+            <table>
+                <tr>
+                    <td><b>Side</b></td>
+                    <td>1x2</td>
+                    <td>2x2</td>
+                    <td>2x4</td>
+                    <td>Dør</td>
+                    <td>Vindue</td>
+                </tr>
+                <% int brick1sum = 0, brick2sum = 0, brick3sum = 0;
+                    for (Side side : sideList) {
+                        int brick1 = 0, brick2 = 0, brick3 = 0;
+                        out.println("<tr><td><b>" + side.getName() + "</b></td>");
+                        for (Brick brick : side.getBricks()) {
+                            if (brick.getName().equals("1x2")) {
+                                brick1++;
+                                brick1sum++;
+                            }
+                            if (brick.getName().equals("2x2")) {
+                                brick2++;
+                                brick2sum++;
+                            }
+                            if (brick.getName().equals("2x4")) {
+                                brick3++;
+                                brick3sum++;
+                            }
+                        }
+                        out.println("<td>" + brick1 + "</td>");
+                        out.println("<td>" + brick2 + "</td>");
+                        out.println("<td>" + brick3 + "</td>");
+                        out.println("<td></td>");
+                        out.println("<td></td></tr>");
 
-            <% for (Side side : sideList) {
-                    out.println("<p><b>Side: " + side.getName() + "</b></p>");
-                    out.println("--------<b>Bricks</b>--------");
-                    out.println("<br>");
-                    for (Brick brick : side.getBricks()) {
-                        out.println(brick.getName());
                     }
-                    out.println("<br>");
-                    out.println("------------------------");
-                }
-            %>
+                %>
 
-            <form name="createOrder" action="FrontController" method="POST">
+                <tr>
+                    <td><b>ialt x højde</b></td>
+                    <td><%= brick1sum * order.getHeight()%></td>
+                    <td><%= brick2sum * order.getHeight()%></td>
+                    <td><%= brick3sum * order.getHeight()%></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <form class="center" name="createOrder" action="FrontController" method="POST">
                 <input type="hidden" name="command" value="createOrder">
                 <input type="submit" value="Confirm Order" required>
             </form>
-            <form name="goBack" action="FrontController" method="POST">
+            <form class="center" name="goBack" action="FrontController" method="POST">
                 <input type="hidden" name="command" value="order">
                 <input type="submit" value="Go Back" required>
             </form>       

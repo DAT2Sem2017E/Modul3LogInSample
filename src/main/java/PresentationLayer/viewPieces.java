@@ -8,6 +8,8 @@ package PresentationLayer;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.OrderEntity;
+import FunctionLayer.Side;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,8 +28,8 @@ public class viewPieces extends Command{
         int width = order.getWidth();
         int length = order.getLength();
         int height = order.getHeight();
-        //tmp. Change the order above to calculate the pieces and then set the list of pieces
-        //as an attribute in the session
+        ArrayList<Side> sidesList = LogicFacade.getBricks(width, length, height);
+        session.setAttribute("sideList", sidesList);
         session.setAttribute("piecesOrder", order);
         return "viewPieces";
     }
