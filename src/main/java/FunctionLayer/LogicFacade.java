@@ -55,10 +55,15 @@ public class LogicFacade {
         int sideb = width - 4;
 
         //calculates bricks for sidea and sidec
+        //i find out if the entire length can be filled with 2x4's
         int remaining = sidea % Twox4.getLength();
         if (remaining == 0) {
+            //finds out how manybricks are needed
             int numBricks = sidea / Twox4.getLength();
+            //if theres need an od number of bricks i fill the side with
+            //as many 2x4 as possible -1 and then use 2x2 to fill the rest
             if (numBricks % 2 != 0) {
+                //fills sideA
                 for (int i = 0; i < numBricks - 1; i++) {
                     brickList.add(Twox4);
                 }
@@ -66,6 +71,7 @@ public class LogicFacade {
                 brickList.add(Twox2);
                 sidesList.add(new Side(brickList, "sideA"));
                 brickList = new ArrayList<Brick>();
+                //fills sideC
                 for (int i = 0; i < numBricks - 1; i++) {
                     brickList.add(Twox4);
                 }
@@ -74,6 +80,9 @@ public class LogicFacade {
                 sidesList.add(new Side(brickList, "sideC"));
                 brickList = new ArrayList<Brick>();
             } else {
+                //if theres needed an even number of bricks i fill half the length with 2x4's
+                //and the rest with 2x2's
+                //fills sideA
                 int numBricks2 = numBricks / 2;
                 for (int i = 0; i < numBricks2; i++) {
                     brickList.add(Twox4);
@@ -83,6 +92,7 @@ public class LogicFacade {
                 }
                 sidesList.add(new Side(brickList, "sideA"));
                 brickList = new ArrayList<Brick>();
+                //fills sideC
                 for (int i = 0; i < numBricks2; i++) {
                     brickList.add(Twox4);
                 }
@@ -93,7 +103,11 @@ public class LogicFacade {
                 brickList = new ArrayList<Brick>();
             }
 
+            //if the entire length can't be filled with 2x4's
+            //here there is 1 dot left so i fill the side with as many 
+            //2x4's as possible and a single 1x2
         } else if (remaining == 1) {
+            //fills sideA
             int numBricks = sidea / Twox4.getLength();
             brickList.add(Onex2);
             for (int i = 0; i < numBricks; i++) {
@@ -102,6 +116,7 @@ public class LogicFacade {
             sidesList.add(new Side(brickList, "sideA"));
             brickList = new ArrayList<Brick>();
 
+            //does it again for sideC
             brickList.add(Onex2);
             for (int i = 0; i < numBricks; i++) {
                 brickList.add(Twox4);
@@ -109,7 +124,9 @@ public class LogicFacade {
             sidesList.add(new Side(brickList, "sideC"));
             brickList = new ArrayList<Brick>();
 
+            //here i fill the side with as many 2x4's as possible and a single 2x2
         } else if (remaining == 2) {
+            //fills sideA
             int numBricks = sidea / Twox4.getLength();
             brickList.add(Twox2);
             for (int i = 0; i < numBricks; i++) {
@@ -117,7 +134,7 @@ public class LogicFacade {
             }
             sidesList.add(new Side(brickList, "sideA"));
             brickList = new ArrayList<Brick>();
-
+            //fills sideC
             brickList.add(Twox2);
             for (int i = 0; i < numBricks; i++) {
                 brickList.add(Twox4);
@@ -125,7 +142,9 @@ public class LogicFacade {
             sidesList.add(new Side(brickList, "sideC"));
             brickList = new ArrayList<Brick>();
 
+            //here i fill the side with as many 2x4's as possible, and one 2x2 and 1x2
         } else if (remaining == 3) {
+            //fills sideA
             int numBricks = sidea / Twox4.getLength();
             brickList.add(Onex2);
             brickList.add(Twox2);
@@ -134,7 +153,7 @@ public class LogicFacade {
             }
             sidesList.add(new Side(brickList, "sideA"));
             brickList = new ArrayList<Brick>();
-
+            //fills sideC
             brickList.add(Onex2);
             brickList.add(Twox2);
             for (int i = 0; i < numBricks; i++) {
@@ -144,11 +163,15 @@ public class LogicFacade {
             brickList = new ArrayList<Brick>();
         }
 
+        //calculates bricks for sideb and sided
         remaining = sideb % Twox4.getLength();
         if (remaining == 0) {
             int numBricks = sideb / Twox4.getLength();
             if (numBricks % 2 != 0) {
+                //if there's needed 3 or more bricks for this side
+                //i fill it with 2x4's and 2x2's
                 if (numBricks >= 3) {
+                    //fills sideB
                     for (int i = 0; i < numBricks - 1; i++) {
                         brickList.add(Twox4);
                     }
@@ -156,6 +179,7 @@ public class LogicFacade {
                     brickList.add(Twox2);
                     sidesList.add(new Side(brickList, "sideB"));
                     brickList = new ArrayList<Brick>();
+                    //fills sideD
                     for (int i = 0; i < numBricks - 1; i++) {
                         brickList.add(Twox4);
                     }
@@ -163,7 +187,10 @@ public class LogicFacade {
                     brickList.add(Twox2);
                     sidesList.add(new Side(brickList, "sideD"));
                     brickList = new ArrayList<Brick>();
+
+                    //if there's needed 2 or less bricks i fill the side with 2x2's and 1x2's
                 } else {
+                    //fills sideB
                     numBricks = sideb / Twox2.getLength();
                     for (int i = 0; i < numBricks - 1; i++) {
                         brickList.add(Twox2);
@@ -172,6 +199,7 @@ public class LogicFacade {
                     brickList.add(Onex2);
                     sidesList.add(new Side(brickList, "sideB"));
                     brickList = new ArrayList<Brick>();
+                    //fills sideD
                     for (int i = 0; i < numBricks - 1; i++) {
                         brickList.add(Twox2);
                     }
@@ -181,7 +209,10 @@ public class LogicFacade {
                 }
 
             } else {
+                //the same as above. If there's needed 2 or less bricks
+                //i fill the side with 2x2's and 1x2's
                 if (numBricks <= 2) {
+                    //fills sideB
                     numBricks = sideb / Twox2.getLength();
                     for (int i = 0; i < numBricks / 2; i++) {
                         brickList.add(Twox2);
@@ -191,6 +222,7 @@ public class LogicFacade {
                     }
                     sidesList.add(new Side(brickList, "sideB"));
                     brickList = new ArrayList<Brick>();
+                    //fills sideD
                     for (int i = 0; i < numBricks / 2; i++) {
                         brickList.add(Twox2);
                     }
@@ -199,8 +231,9 @@ public class LogicFacade {
                     }
                     sidesList.add(new Side(brickList, "sideD"));
                     brickList = new ArrayList<Brick>();
-
+                    //if there's neeeded 3 or more bricks i fill the side with 2x4's and 2x2's
                 } else {
+                    //fills sideB
                     int numBricks2 = numBricks / 2;
                     for (int i = 0; i < numBricks2; i++) {
                         brickList.add(Twox4);
@@ -210,6 +243,7 @@ public class LogicFacade {
                     }
                     sidesList.add(new Side(brickList, "sideB"));
                     brickList = new ArrayList<Brick>();
+                    //fills sideD
                     for (int i = 0; i < numBricks2; i++) {
                         brickList.add(Twox4);
                     }
@@ -221,8 +255,11 @@ public class LogicFacade {
                 }
 
             }
-
+            //if the entire length can't be filled with 2x4's
+            //here there is 1 dot left so i fill the side with as many 
+            //2x4's as possible and a single 1x2
         } else if (remaining == 1) {
+            //fills sideB
             int numBricks = sideb / Twox4.getLength();
             brickList.add(Onex2);
             for (int i = 0; i < numBricks; i++) {
@@ -231,6 +268,7 @@ public class LogicFacade {
             sidesList.add(new Side(brickList, "sideB"));
             brickList = new ArrayList<Brick>();
 
+            //fills sideD
             brickList.add(Onex2);
             for (int i = 0; i < numBricks; i++) {
                 brickList.add(Twox4);
@@ -238,7 +276,9 @@ public class LogicFacade {
             sidesList.add(new Side(brickList, "sideD"));
             brickList = new ArrayList<Brick>();
 
+            //here i fill the side with as many 2x4's as possible and a single 2x2
         } else if (remaining == 2) {
+            //fills sideB
             int numBricks = sideb / Twox4.getLength();
             brickList.add(Twox2);
             for (int i = 0; i < numBricks; i++) {
@@ -247,14 +287,16 @@ public class LogicFacade {
             sidesList.add(new Side(brickList, "sideB"));
             brickList = new ArrayList<Brick>();
 
+            //fills sideD
             brickList.add(Twox2);
             for (int i = 0; i < numBricks; i++) {
                 brickList.add(Twox4);
             }
             sidesList.add(new Side(brickList, "sideD"));
             brickList = new ArrayList<Brick>();
-
+            //here i fill the side with as many 2x4's as possible, and one 2x2 and 1x2
         } else if (remaining == 3) {
+            //fills sideB
             int numBricks = sideb / Twox4.getLength();
             brickList.add(Onex2);
             brickList.add(Twox2);
@@ -263,7 +305,8 @@ public class LogicFacade {
             }
             sidesList.add(new Side(brickList, "sideB"));
             brickList = new ArrayList<Brick>();
-
+            
+            //fills sideD
             brickList.add(Onex2);
             brickList.add(Twox2);
             for (int i = 0; i < numBricks; i++) {
