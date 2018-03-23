@@ -8,6 +8,7 @@ package PresentationLayer;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.OrderEntity;
+import FunctionLayer.OrderException;
 import FunctionLayer.Side;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +22,7 @@ import javax.servlet.http.HttpSession;
 public class viewPieces extends Command{
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderException {
         int orderId = Integer.parseInt(request.getParameter("orderId"));
         HttpSession session = request.getSession();
         OrderEntity order = LogicFacade.getOrder(orderId);

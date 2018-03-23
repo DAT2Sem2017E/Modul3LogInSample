@@ -1,6 +1,7 @@
 package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.OrderException;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,6 +37,6 @@ abstract class Command {
     }
 
     abstract String execute( HttpServletRequest request, HttpServletResponse response ) 
-            throws LoginSampleException;
+            throws LoginSampleException, OrderException;
 
 }

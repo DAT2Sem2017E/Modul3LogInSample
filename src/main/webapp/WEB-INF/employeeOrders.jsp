@@ -26,6 +26,16 @@
                             + ", <b>User Email:</b> " + order.getEmail() + ", <b>Status:</b> " + order.getStatus() + "</p>");
                 }
             %>
+            <h2 class="center">View pieces list of orders below</h2>
+            <form name="changeStatus" class="center" action='FrontController' method='post'>
+                <input type="hidden" name="command" value="viewPieces">
+                <select name="orderId">
+                    <% for (OrderEntity order : ordersList) {
+                            out.println("<option value='" + order.getId() + "'>" + "Order id: " + order.getId() + "</option>");
+                        }%>
+                </select>
+                <input type="submit" value="View pieces for order">
+            </form>
             <h2 class="center">Change order status below</h2>
             <form name="changeStatus" class="center" action='FrontController' method='post'>
                 <input type="hidden" name="command" value="changeStatus">

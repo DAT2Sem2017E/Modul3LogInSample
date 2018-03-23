@@ -8,6 +8,7 @@ package PresentationLayer;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.OrderEntity;
+import FunctionLayer.OrderException;
 import FunctionLayer.User;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +22,7 @@ import javax.servlet.http.HttpSession;
 public class Orders extends Command{
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderException {
         ArrayList<OrderEntity> orderList =  new ArrayList<>();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");

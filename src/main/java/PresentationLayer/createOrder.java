@@ -8,6 +8,7 @@ package PresentationLayer;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.OrderEntity;
+import FunctionLayer.OrderException;
 import FunctionLayer.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpSession;
 public class createOrder extends Command{
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         OrderEntity order = (OrderEntity) session.getAttribute("singleOrder");

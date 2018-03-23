@@ -9,6 +9,7 @@ import DBAccess.OrderMapper;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.OrderEntity;
+import FunctionLayer.OrderException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class changeStatus extends Command {
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, OrderException {
         int orderId = Integer.parseInt(request.getParameter("orderId"));
         LogicFacade.changeStatus(orderId);
         return "employeeOrders";

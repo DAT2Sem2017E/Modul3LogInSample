@@ -7,6 +7,7 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.OrderEntity;
+import FunctionLayer.OrderException;
 import FunctionLayer.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
  */
 public class OrderMapper {
 
-    public static ArrayList<OrderEntity> getOrders(int userId) throws LoginSampleException {
+    public static ArrayList<OrderEntity> getOrders(int userId) throws OrderException {
         ArrayList<OrderEntity> orderList = new ArrayList<>();
         try {
             Connection con = Connector.connection();
@@ -43,11 +44,11 @@ public class OrderMapper {
             }
             return orderList;
         } catch (ClassNotFoundException | SQLException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new OrderException(ex.getMessage());
         }
     }
 
-    public static ArrayList<OrderEntity> getEmployeeOrders() throws LoginSampleException {
+    public static ArrayList<OrderEntity> getEmployeeOrders() throws OrderException {
         ArrayList<OrderEntity> orderList = new ArrayList<>();
         try {
             Connection con = Connector.connection();
@@ -68,11 +69,11 @@ public class OrderMapper {
             }
             return orderList;
         } catch (ClassNotFoundException | SQLException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new OrderException(ex.getMessage());
         }
     }
 
-    public static OrderEntity getOrder(int orderId) throws LoginSampleException {
+    public static OrderEntity getOrder(int orderId) throws OrderException {
         OrderEntity order = null;
         try {
             Connection con = Connector.connection();
@@ -89,11 +90,11 @@ public class OrderMapper {
             }
             return order;
         } catch (ClassNotFoundException | SQLException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new OrderException(ex.getMessage());
         }
     }
 
-    public static boolean changeStatus(int orderId) throws LoginSampleException {
+    public static boolean changeStatus(int orderId) throws OrderException {
         try {
             Connection con = Connector.connection();
             String SQL = "UPDATE LegoDB.Orders SET Orders.status = 'Afsendt' "
@@ -103,11 +104,11 @@ public class OrderMapper {
             ps.executeUpdate();
             return true;
         } catch (ClassNotFoundException | SQLException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new OrderException(ex.getMessage());
         }
     }
 
-    public static boolean createOrder(int width, int length, int height, int userId) throws LoginSampleException {
+    public static boolean createOrder(int width, int length, int height, int userId) throws OrderException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO Orders (length, width, height, user_id) VALUES (?, ?, ?, ?)";
@@ -119,7 +120,7 @@ public class OrderMapper {
             ps.executeUpdate();
             return true;
         } catch (ClassNotFoundException | SQLException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new OrderException(ex.getMessage());
         }
     }
 
