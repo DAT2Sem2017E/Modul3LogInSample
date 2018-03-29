@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class Connector {
 
     //private static final String URL = "jdbc:mysql://46.101.253.149:3306/useradmin";
-    private static final String URL = "jdbc:mysql://138.68.103.105:3306/LegoDB";
+    private static final String URL = "jdbc:mysql://138.68.103.105:3306/LegoDB?autoReconnect=true";
     private static final String USERNAME = "legoboi";
     private static final String PASSWORD = "lego";
 
