@@ -6,6 +6,11 @@
 package DBAccess;
 
 import FunctionLayer.Order;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +20,43 @@ public class OrderMapper {
 
     public static boolean createOrder(Order order) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * Fetches every order from the database and returns them in an ArrayList
+     * @return ArrayList
+     */
+    public static ArrayList<Order> getOrders() {
+        
+        try {
+            ArrayList<Order> orders = new ArrayList<>();
+            Connection con = Connector.connection();
+            String SQL = "SELECT * FROM orders";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int width = rs.getInt("width");
+                int length = rs.getInt("length");
+                int roofId = rs.getInt("fkRoofId");
+                int shedWidth = rs.getInt("shedWidth");
+                int shedlength = rs.getInt("shedLength");
+                int userId = rs.getInt("fkUserId");
+                int status = rs.getInt("isConfirmed");
+
+                orders.add(new Order(id, width, length, roofId, shedWidth, shedlength, userId, status));
+
+            }
+            
+            return orders;
+        } catch (ClassNotFoundException | SQLException e) {
+            
+            //TODO: Custom exception
+            e.printStackTrace();
+            return null;
+        }
+       
     }
     
 }

@@ -19,6 +19,7 @@ abstract class Command {
         commands.put("flatRoofPage", new flatRoofPage());
         commands.put("flatRoofRequest", new flatRoofRequest());
         commands.put("raisedRoofPage", new raisedRoofPage());
+        commands.put("orderList", new OrderList());
     }
 
     static Command from(HttpServletRequest request) {

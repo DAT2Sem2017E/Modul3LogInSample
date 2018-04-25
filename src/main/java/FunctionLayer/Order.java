@@ -28,6 +28,17 @@ public class Order {
         this.userId = userId;
         this.status = status;
     }
+    
+    public Order(int id, int width, int length, int roofId, int shedWidth, int shedLength, int userId, int status) {
+        this.id = id;
+        this.width = width;
+        this.length = length;
+        this.roofId = roofId;
+        this.shedWidth = shedWidth;
+        this.shedLength = shedLength;
+        this.userId = userId;
+        this.status = status;
+    }
 
     public int getId() {
         return id;
