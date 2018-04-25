@@ -10,9 +10,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Customer home page</title>
+        <%@include file="includes/links.jsp" %>
     </head>
+    <%@include file="includes/nav.jsp" %>
     <body>
-        <h1>Hello <%=request.getParameter( "email" )%> </h1>
-        You are now logged in as a customer of our wonderful site.
+        <div class="container">
+            <h1>Hello <%=request.getParameter("email")%> </h1>
+            You are now logged in as a customer of our wonderful site.
+        </div>
     </body>
 </html>

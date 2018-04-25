@@ -1,5 +1,6 @@
 package FunctionLayer;
 
+import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
 
 /**
@@ -16,6 +17,13 @@ public class LogicFacade {
         User user = new User(email, password, "customer");
         UserMapper.createUser( user );
         return user;
+    }
+    
+    public static boolean createOrder(int width, int length, int roofId, int shedWidth, int shedLength, int userId, int status){
+        Order order = new Order(width, length, roofId, shedWidth, shedLength, userId, status);
+        return OrderMapper.createOrder(order);
+        
+        
     }
 
 }

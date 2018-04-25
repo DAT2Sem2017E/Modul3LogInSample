@@ -25,10 +25,13 @@
 
             <p>Rekvirér tilbud - start med at vælge type:</p>
 
-            <h3><a href="FrontController?command=flatRoofPage">Carport med fladt tag</a></h1>
-                <br>
-                <h3><a href="FrontController?command=raisedRoofPage">Carport med rejsning</a></h3>
+            <a href="FrontController?command=flatRoofPage"><h3>Carport med fladt tag</h3>
+                <img src="img/quickurejs.gif" alt=""/></a>
 
+            <br>
+            <a href="FrontController?command=raisedRoofPage"><h3>Carport med rejsning</h3>
+                <img src="img/quickmrejs.gif" alt=""/></a>
+           
         </div>
     </body>
 </html>

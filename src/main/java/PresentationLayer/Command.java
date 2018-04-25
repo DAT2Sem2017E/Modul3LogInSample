@@ -18,6 +18,7 @@ abstract class Command {
         commands.put("logout", new logout());
         commands.put("flatRoofPage", new flatRoofPage());
         commands.put("flatRoofRequest", new flatRoofRequest());
+        commands.put("raisedRoofPage", new raisedRoofPage());
     }
 
     static Command from(HttpServletRequest request) {

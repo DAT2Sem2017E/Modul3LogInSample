@@ -1,6 +1,6 @@
 <%-- 
-    Document   : flatRoofPage
-    Created on : Apr 24, 2018, 3:06:02 PM
+    Document   : raisedRoofPage
+    Created on : Apr 25, 2018, 10:56:02 AM
     Author     : martin
 --%>
 
@@ -9,13 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Carport med fladt tag</title>
+        <title>Carport med rejsning</title>
         <%@include file="includes/links.jsp" %>
     </head>
     <%@include file="includes/nav.jsp" %>
     <body>
         <div class="container">
-            <h2>QUICK-BYG TILBUD - CARPORT MED FLADT TAG</h2>
+            <h2>QUICK-BYG TILBUD - CARPORT MED REJSNING</h2>
             <h4>
                 Med et specialudviklet computerprogram kan vi lynhurtigt beregne prisen og udskrive en skitsetegning på en carport indenfor vores standardprogram, der tilpasses dine specifikke ønsker.</h4>
             <br>
@@ -79,9 +79,20 @@
 
                 <label>Tag</label>
                 <select class="form-control">
-                    <option value="plasttrapezplader">Plasttrapezplader</option>
+                    <option value="">Vælg tagtype/farve</option>
                 </select>
-
+                
+                <label>Taghældning</label>
+                <select class="form-control">
+                    <option value="15">15 grader</option>
+                    <option value="20">20 grader</option>
+                    <option value="25">25 grader</option>
+                    <option value="30">30 grader</option>
+                    <option value="35">35 grader</option>
+                    <option value="40">40 grader</option>
+                    <option value="45">45 grader</option>
+                </select>
+                
                 <label>Redskabsrum:</label>
                 <p>NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet*</p>
 
