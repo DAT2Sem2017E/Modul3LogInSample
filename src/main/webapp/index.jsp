@@ -16,7 +16,7 @@
     <body>
         <div class="container">
             <h1 class="text-center">Velkommen til Fog</h1>
-            <img src="img/logo.jpg" alt="" style="width: 300px; display: block; margin: auto;"/>
+            <img src="img/logo.jpg" alt="" style="display: block; width: 300px; margin: auto;"/>
 
         </div>
     </body>
