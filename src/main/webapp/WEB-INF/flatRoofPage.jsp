@@ -4,6 +4,8 @@
     Author     : martin
 --%>
 
+<%@page import="FunctionLayer.Roof"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -79,7 +81,13 @@
 
                 <label>Tag</label>
                 <select class="form-control">
-                    <option value="plasttrapezplader">Plasttrapezplader</option>
+                    <% ArrayList<Roof> roofs = (ArrayList<Roof>) request.getAttribute("roofs");
+                        for (Roof roof : roofs) {
+
+
+                    %>
+                    <option value="<%=roof.getId()%>"><%=roof.getName()%></option>
+                    <% }%>
                 </select>
 
                 <label>Redskabsrum:</label>
