@@ -22,8 +22,8 @@ public class LogicFacade {
         return user;
     }
 
-    public static boolean createOrder(int width, int length, int roofId, int shedWidth, int shedLength, int userId, int status) {
-        Order order = new Order(width, length, roofId, shedWidth, shedLength, userId, status);
+    public static boolean createOrder(int width, int length, int roofId, int shedWidth, int shedLength, int userId, int status, boolean isConfirmed, String comments) {
+        Order order = new Order(width, length, roofId, shedWidth, shedLength, userId, status, isConfirmed, comments);
         return OrderMapper.createOrder(order);
     }
 
