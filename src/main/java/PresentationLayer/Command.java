@@ -18,7 +18,7 @@ abstract class Command {
         commands.put("carportRequestPage", new carportRequestPage());
         commands.put("logout", new logout());
         commands.put("flatRoofPage", new flatRoofPage());
-        commands.put("flatRoofRequest", new flatRoofRequest());
+        commands.put("carportRequest", new carportRequest());
         commands.put("raisedRoofPage", new raisedRoofPage());
         commands.put("employeePage", new employeePage());
     }
