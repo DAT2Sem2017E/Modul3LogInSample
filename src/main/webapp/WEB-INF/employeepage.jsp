@@ -23,7 +23,7 @@
 
             <div class="container">
                 <div class="row">
-                    <a href="FrontController?command=orderList">Se Ordre</a>
+                    <a class="btn btn-primary" href="FrontController?command=orderList">Se Ordre</a>
                     <button value="Admin Varer" class="btn btn-primary">Tilføj Varer</button>
                     <button value="Admin Varer" class="btn btn-primary">Ændre Varer</button>
                 </div>
