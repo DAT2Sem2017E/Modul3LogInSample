@@ -45,6 +45,7 @@
                         out.print("<th>Shed length</th>");
                         out.print("<th>User ID</th>");
                         out.print("<th>Status</th>");
+                        out.print("<th>Comment</th>");
                         out.print("</tr>");
                         
                         
@@ -59,6 +60,7 @@
                             out.print("<td>" + currOrder.getShedLength() +"</td>");
                             out.print("<td>" + currOrder.getUserId() +"</td>");
                             out.print("<td>" + currOrder.getStatus() +"</td>");
+                            out.print("<td>" + currOrder.getComment() +"</td>");
                             out.print("</tr>");
                         }
                     }

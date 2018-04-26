@@ -18,6 +18,7 @@ public class Order {
     private int shedLength;
     private int userId;
     private int status;
+    private String comment;
 
     public Order(int width, int length, int roofId, int shedWidth, int shedLength, int userId, int status) {
         this.width = width;
@@ -29,7 +30,7 @@ public class Order {
         this.status = status;
     }
     
-    public Order(int id, int width, int length, int roofId, int shedWidth, int shedLength, int userId, int status) {
+    public Order(int id, int width, int length, int roofId, int shedWidth, int shedLength, int userId, int status, String comment) {
         this.id = id;
         this.width = width;
         this.length = length;
@@ -38,6 +39,7 @@ public class Order {
         this.shedLength = shedLength;
         this.userId = userId;
         this.status = status;
+        this.comment = comment;
     }
 
     public int getId() {
@@ -102,6 +104,14 @@ public class Order {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
     
     

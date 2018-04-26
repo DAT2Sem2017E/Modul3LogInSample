@@ -7,6 +7,7 @@
 package PresentationLayer;
 
 import DBAccess.OrderMapper;
+import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class OrderList extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
             HttpSession session = request.getSession();
-            ArrayList<Order> allOrders = OrderMapper.getOrders();
+            ArrayList<Order> allOrders = LogicFacade.getOrders();
             
             session.setAttribute("orderList", allOrders);
             

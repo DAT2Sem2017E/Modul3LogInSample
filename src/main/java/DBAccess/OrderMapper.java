@@ -44,8 +44,9 @@ public class OrderMapper {
                 int shedlength = rs.getInt("shedLength");
                 int userId = rs.getInt("fkUserId");
                 int status = rs.getInt("isConfirmed");
+                String comment = rs.getString("comments");
 
-                orders.add(new Order(id, width, length, roofId, shedWidth, shedlength, userId, status));
+                orders.add(new Order(id, width, length, roofId, shedWidth, shedlength, userId, status, comment));
 
             }
             
