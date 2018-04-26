@@ -31,7 +31,8 @@
 
             <h5>Ønsket carport mål:</h5>
             <form action="FrontController" method="post">
-                <input type="hidden" name="command" value="flatRoofRequest">
+                <input type="hidden" name="command" value="carportRequest">
+                <input type="hidden" name="raisedOrFlat" value="flat">
                 <label>Carport bredde</label>
 
                 <select name="width" class="form-control">

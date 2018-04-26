@@ -31,5 +31,8 @@ public class LogicFacade {
     public static ArrayList<Roof> getFlatRoofs() {
         return RoofMapper.getFlatRoofs();
     }
+    public static ArrayList<Roof> getRaisedRoofs() {
+        return RoofMapper.getRaisedRoofs();
+    }
 
 }
