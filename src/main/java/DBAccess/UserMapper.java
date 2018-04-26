@@ -20,11 +20,14 @@ public class UserMapper {
     public static void createUser( User user ) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO user (email, password, role) VALUES (?, ?, ?)";
+            String SQL = "INSERT INTO user (email, password, role, address, name, phone) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
             ps.setString( 1, user.getEmail() );
             ps.setString( 2, user.getPassword() );
             ps.setString( 3, user.getRole() );
+            ps.setString( 4, user.getAddress());
+            ps.setString( 5, user.getName());
+            ps.setInt( 6, user.getPhone());
             ps.executeUpdate();
             ResultSet ids = ps.getGeneratedKeys();
             ids.next();
@@ -38,7 +41,7 @@ public class UserMapper {
     public static User login( String email, String password ) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT id, role FROM user "
+            String SQL = "SELECT id, role, address, name, phone FROM user "
                     + "WHERE email=? AND password=?";
             PreparedStatement ps = con.prepareStatement( SQL );
             ps.setString( 1, email );
@@ -47,7 +50,10 @@ public class UserMapper {
             if ( rs.next() ) {
                 String role = rs.getString( "role" );
                 int id = rs.getInt( "id" );
-                User user = new User( email, password, role );
+                int phone = rs.getInt( "phone" );
+                String name = rs.getString( "name" );
+                String address = rs.getString( "address" );
+                User user = new User( email, password, role, address, name, phone);
                 user.setId( id );
                 return user;
             } else {
