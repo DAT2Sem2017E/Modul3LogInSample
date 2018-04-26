@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package FunctionLayer;
 
 import DBAccess.OrderMapper;
