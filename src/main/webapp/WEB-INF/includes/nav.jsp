@@ -16,6 +16,20 @@
             <li><a href="FrontController?command=carportRequestPage">Quickbyg</a></li>
             <li><a href="#">Page 2</a></li>
             <li><a href="#">Page 3</a></li>
+
+            <%
+                if (request.getSession().getAttribute("role") != null) {
+                    if (request.getSession().getAttribute("role").equals("employee")) {
+            %>       
+            <li><a href="FrontController?command=employeePage">Employee Page</a></li> 
+                <%
+                } else if (request.getSession().getAttribute("role").equals("customer")) {
+                %>
+            <li><a href="#">Customer Page</a></li> 
+                <%
+                        }
+                    }
+                %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <%

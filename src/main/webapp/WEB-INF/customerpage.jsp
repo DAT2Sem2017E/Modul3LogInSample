@@ -15,7 +15,7 @@
     <%@include file="includes/nav.jsp" %>
     <body>
         <div class="container">
-            <h1>Hello <%=request.getParameter("email")%> </h1>
+            <h1>Hello <%=request.getSession().getAttribute("email")%> </h1>
             You are now logged in as a customer of our wonderful site.
         </div>
     </body>
