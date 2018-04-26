@@ -46,6 +46,9 @@
                     Address:<br>
                     <input class="form-control" type="text" name="address">
                     <br>
+                    City:<br>
+                    <input class="form-control" type="text" name="city">
+                    <br>
                     Phone:<br>
                     <input class="form-control" type="number" name="phone">
                     <br>

@@ -6,7 +6,7 @@
 package DBAccess;
 
 import FunctionLayer.Roof;
-import FunctionLayer.flatRoofRequestException;
+import FunctionLayer.requestException;
 import com.mysql.cj.api.mysqla.result.Resultset;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -45,31 +45,3 @@ public class RoofMapper {
     }
 
 }
-
-//public static ArrayList<Order> getUsersOrders(int userId) throws LoginSampleException {
-//        try {
-//            ArrayList<Order> orders = new ArrayList<>();
-//            Connection conn = Connector.connection();
-//            String SQL = "SELECT * FROM Orders WHERE fk_userId = ?";
-//            PreparedStatement ps = conn.prepareStatement(SQL);
-//            ps.setInt(1, userId);
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//                int id = rs.getInt("id");
-//                int length = rs.getInt("length");
-//                int width = rs.getInt("width");
-//                int height = rs.getInt("height");
-//                int status = rs.getInt("status");
-//                boolean door = rs.getBoolean("door");
-//                boolean window = rs.getBoolean("window");
-//                orders.add(new Order(id, length, width, height, userId, status, door, window));
-//
-//            }
-//            return orders;
-//
-//        } catch (ClassNotFoundException | SQLException ex) {
-//            throw new LoginSampleException(ex.getMessage());
-//        }
-//
-//    }
-

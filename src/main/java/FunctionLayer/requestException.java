@@ -9,9 +9,9 @@ package FunctionLayer;
  *
  * @author martin
  */
-public class flatRoofRequestException extends Exception {
+public class requestException extends Exception {
 
-    public flatRoofRequestException(String msg) {
+    public requestException(String msg) {
         super(msg);
     }
 

@@ -14,6 +14,7 @@ public class Order {
     private int width;
     private int length;
     private int roofId;
+    private int roofPitch;
     private int shedWidth;
     private int shedLength;
     private int userId;
@@ -21,15 +22,42 @@ public class Order {
     private Boolean isConfirmed;
     private String comments;
 
-    public Order(int width, int length, int roofId, int shedWidth, int shedLength, int userId, int status, Boolean isConfirmed, String comments) {
+    public Order(int width, int length, int roofId, int roofPitch, int shedWidth, int shedLength, int userId, int status, Boolean isConfirmed, String comments) {
         this.width = width;
         this.length = length;
         this.roofId = roofId;
+        this.roofPitch = roofPitch;
         this.shedWidth = shedWidth;
         this.shedLength = shedLength;
         this.userId = userId;
         this.status = status;
         this.isConfirmed = isConfirmed;
+        this.comments = comments;
+    }
+
+    public int getRoofPitch() {
+        return roofPitch;
+    }
+
+    public void setRoofPitch(int roofPitch) {
+        this.roofPitch = roofPitch;
+    }
+
+    
+
+    public Boolean getIsConfirmed() {
+        return isConfirmed;
+    }
+
+    public void setIsConfirmed(Boolean isConfirmed) {
+        this.isConfirmed = isConfirmed;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
         this.comments = comments;
     }
 

@@ -6,7 +6,7 @@
 package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
-import FunctionLayer.flatRoofRequestException;
+import FunctionLayer.requestException;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,9 +39,9 @@ public class FrontController extends HttpServlet {
         } catch (LoginSampleException ex) {
             request.setAttribute("error", ex.getMessage());
             request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-        } catch (flatRoofRequestException ex) {
+        } catch (requestException ex) {
             request.setAttribute("error", ex.getMessage());
-            request.getRequestDispatcher("/WEB-INF/flatRoofPage.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/carportRequest.jsp").forward(request, response);
         }
     }
 

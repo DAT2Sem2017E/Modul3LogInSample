@@ -16,15 +16,15 @@ public class LogicFacade {
         return UserMapper.login(email, password);
     }
 
-    public static User createUser(String email, String password, String name, String address, int phone) throws LoginSampleException
+    public static User createUser(String email, String password, String name, String address, int phone, String city) throws LoginSampleException
     {
-        User user = new User(email, password, "customer", address, name, phone);
+        User user = new User(email, password, "customer", address, name, phone, city);
         UserMapper.createUser(user);
         return user;
     }
 
-    public static boolean createOrder(int width, int length, int roofId, int shedWidth, int shedLength, int userId, int status, boolean isConfirmed, String comments) {
-        Order order = new Order(width, length, roofId, shedWidth, shedLength, userId, status, isConfirmed, comments);
+    public static boolean createOrder(int width, int length, int roofId, int roofPitch, int shedWidth, int shedLength, int userId, int status, boolean isConfirmed, String comments) throws requestException {
+        Order order = new Order(width, length, roofId, roofPitch, shedWidth, shedLength, userId, status, isConfirmed, comments);
         return OrderMapper.createOrder(order);
     }
 
