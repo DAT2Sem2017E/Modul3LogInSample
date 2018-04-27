@@ -33,7 +33,7 @@ public class Order {
         this.userId = userId;
         this.status = status;
         this.isConfirmed = isConfirmed;
-        this.comments = comments;
+        this.comment = comments;
     }
     
     public Order(int id, int width, int length, int roofId, int shedWidth, int shedLength, int userId, int status, String comment) {
@@ -67,11 +67,11 @@ public class Order {
     }
 
     public String getComments() {
-        return comments;
+        return comment;
     }
 
     public void setComments(String comments) {
-        this.comments = comments;
+        this.comment = comments;
     }
 
     
