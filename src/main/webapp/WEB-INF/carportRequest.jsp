@@ -31,7 +31,14 @@
             <br>
             <a href="FrontController?command=raisedRoofPage"><h3>Carport med rejsning</h3>
                 <img src="img/quickmrejs.gif" alt=""/></a>
-           
+
+            <h3>
+                <%if (request.getAttribute("error") != null) {
+                        out.print(request.getAttribute("error"));
+                    }
+                %>
+
+            </h3>
         </div>
     </body>
 </html>

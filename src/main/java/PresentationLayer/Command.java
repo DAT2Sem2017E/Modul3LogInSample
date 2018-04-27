@@ -1,6 +1,7 @@
 package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.requestException;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,9 +18,10 @@ abstract class Command {
         commands.put("carportRequestPage", new carportRequestPage());
         commands.put("logout", new logout());
         commands.put("flatRoofPage", new flatRoofPage());
-        commands.put("flatRoofRequest", new flatRoofRequest());
+        commands.put("carportRequest", new carportRequest());
         commands.put("raisedRoofPage", new raisedRoofPage());
         commands.put("orderList", new OrderList());
+        commands.put("employeePage", new employeePage());
     }
 
     static Command from(HttpServletRequest request) {
@@ -31,6 +33,6 @@ abstract class Command {
     }
 
     abstract String execute(HttpServletRequest request, HttpServletResponse response)
-            throws LoginSampleException;
+            throws LoginSampleException, requestException;
 
 }

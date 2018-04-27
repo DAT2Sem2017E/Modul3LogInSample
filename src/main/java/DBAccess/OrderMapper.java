@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import FunctionLayer.requestException;
 
 /**
  *
@@ -18,8 +19,25 @@ import java.util.ArrayList;
  */
 public class OrderMapper {
 
-    public static boolean createOrder(Order order) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static boolean createOrder(Order order) throws requestException {
+        try {
+            Connection conn = Connector.connection();
+            String SQL = "INSERT INTO `Fog-CarportsDB`.`orders` (`width`, `length`, `fkRoofId`, `roofPitch`, `shedWidth`, `shedLength`, `fkUserId`, `isConfirmed`, `comments`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ps.setInt(1, order.getWidth());
+            ps.setInt(2, order.getLength());
+            ps.setInt(3, order.getRoofId());
+            ps.setInt(4, order.getRoofPitch());
+            ps.setInt(5, order.getShedWidth());
+            ps.setInt(6, order.getShedLength());
+            ps.setInt(7, order.getUserId());
+            ps.setBoolean(8, order.getIsConfirmed());
+            ps.setString(9, order.getComments());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException | ClassNotFoundException exception) {
+            throw new requestException(exception.getMessage());
+        }
     }
 
     /**
@@ -56,8 +74,6 @@ public class OrderMapper {
             //TODO: Custom exception
             e.printStackTrace();
             return null;
-        }
-       
+        }  
     }
-    
 }
