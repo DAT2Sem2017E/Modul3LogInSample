@@ -23,7 +23,7 @@ public class OrderMapper {
     }
 
     /**
-     * Fetches every order from the database and returns them in an ArrayList
+     * Fetches every order from the database and returns them in an ArrayList ordered descending by id.
      * @return ArrayList
      */
     public static ArrayList<Order> getOrders() {
@@ -31,7 +31,7 @@ public class OrderMapper {
         try {
             ArrayList<Order> orders = new ArrayList<>();
             Connection con = Connector.connection();
-            String SQL = "SELECT * FROM orders";
+            String SQL = "SELECT * FROM orders ORDER BY id DESC";
             PreparedStatement ps = con.prepareStatement(SQL);
             
             ResultSet rs = ps.executeQuery();
