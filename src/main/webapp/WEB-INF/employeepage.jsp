@@ -4,6 +4,8 @@
     Author     : kasper
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,10 +23,48 @@
 
             <div class="container">
                 <div class="row">
-                    <button value="Se Ordre" class="btn btn-primary">Se Ordre</button>
+                    <a class="btn btn-primary" href="FrontController?command=orderList">Se Ordre</a>
                     <button value="Admin Varer" class="btn btn-primary">Tilføj Varer</button>
                     <button value="Admin Varer" class="btn btn-primary">Ændre Varer</button>
                 </div>
+            </div>
+            <br>
+            <br>
+            <div class="row row1">
+                <%
+                    if(request.getSession().getAttribute("orderList") != null) {
+                        ArrayList<Order> orders = (ArrayList<Order>)request.getSession().getAttribute("orderList");
+
+                        out.print("<table style=\"width:100%\">");
+                        out.print("<tr>");
+                        out.print("<th>ID</th>");
+                        out.print("<th>Width</th>");
+                        out.print("<th>Length</th>");
+                        out.print("<th>roof ID</th>");
+                        out.print("<th>Shed width</th>");
+                        out.print("<th>Shed length</th>");
+                        out.print("<th>User ID</th>");
+                        out.print("<th>Status</th>");
+                        out.print("<th>Comment</th>");
+                        out.print("</tr>");
+                        
+                        
+                        for (Order currOrder: orders) {
+
+                            out.print("<tr>");
+                            out.print("<td>" + currOrder.getId() +"</td>");
+                            out.print("<td>" + currOrder.getWidth() +"</td>");
+                            out.print("<td>" + currOrder.getLength() +"</td>");
+                            out.print("<td>" + currOrder.getRoofId() +"</td>");
+                            out.print("<td>" + currOrder.getShedWidth() +"</td>");
+                            out.print("<td>" + currOrder.getShedLength() +"</td>");
+                            out.print("<td>" + currOrder.getUserId() +"</td>");
+                            out.print("<td>" + currOrder.getStatus() +"</td>");
+                            out.print("<td>" + currOrder.getComment() +"</td>");
+                            out.print("</tr>");
+                        }
+                    }
+                %>
             </div>
         </div>
     </body>

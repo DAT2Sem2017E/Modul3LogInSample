@@ -34,5 +34,13 @@ public class LogicFacade {
     public static ArrayList<Roof> getRaisedRoofs() {
         return RoofMapper.getRaisedRoofs();
     }
+    
+    /**
+     * fetches all orders from database
+     * @return 
+     */
+    public static ArrayList<Order> getOrders() {
+        return OrderMapper.getOrders();
+    }
 
 }
