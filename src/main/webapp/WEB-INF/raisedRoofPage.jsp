@@ -4,6 +4,9 @@
     Author     : martin
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="FunctionLayer.Roof"%>
+<%@page import="FunctionLayer.Roof"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,10 +32,11 @@
 
             <h5>Ønsket carport mål:</h5>
             <form action="FrontController" method="post">
-                <input type="hidden" name="command" value="flatRoofRequest">
+                <input type="hidden" name="command" value="carportRequest">
+                <input type="hidden" name="raisedOrFlat" value="raised">
                 <label>Carport bredde</label>
 
-                <select class="form-control">
+                <select name="width" class="form-control">
                     <option value="0">Vælg bredde</option>
                     <option value="240">240 cm</option>
                     <option value="270">270 cm</option>
@@ -54,7 +58,7 @@
                     <option value="750">750 cm</option>
                 </select>
                 <label>Carport længde</label>
-                <select class="form-control">
+                <select name="length" class="form-control">
                     <option value="0">Vælg længde</option>
                     <option value="240">240 cm</option>
                     <option value="270">270 cm</option>
@@ -78,12 +82,18 @@
                 </select>
 
                 <label>Tag</label>
-                <select class="form-control">
-                    <option value="">Vælg tagtype/farve</option>
+                <select name="roof" class="form-control">
+                    <% ArrayList<Roof> roofs = (ArrayList<Roof>) request.getAttribute("roofs");
+                        for (Roof roof : roofs) {
+
+
+                    %>
+                    <option value="<%=roof.getId()%>"><%=roof.getName()%></option>
+                    <% }%>
                 </select>
-                
+
                 <label>Taghældning</label>
-                <select class="form-control">
+                <select name="roofPitch" class="form-control">
                     <option value="15">15 grader</option>
                     <option value="20">20 grader</option>
                     <option value="25">25 grader</option>
@@ -92,12 +102,12 @@
                     <option value="40">40 grader</option>
                     <option value="45">45 grader</option>
                 </select>
-                
+
                 <label>Redskabsrum:</label>
                 <p>NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet*</p>
 
                 <label>Redskabsrum bredde</label>
-                <select class="form-control">
+                <select name="shedWidth" class="form-control">
                     <option value="0">Ønsker ikke redskabsrum</option>
                     <option value="210">210 cm</option>
                     <option value="240">240 cm</option>
@@ -120,7 +130,7 @@
                 </select>
 
                 <label>Redskabsrum længde</label>
-                <select class="form-control">
+                <select name="shedLength" class="form-control">
                     <option value="0">Ønsker ikke redskabsrum</option>
                     <option value="150">150 cm</option>
                     <option value="180">180 cm</option>
@@ -162,10 +172,11 @@
                 <label>Email adresse</label>
                 <input class="form-control" type="text" name="email">
 
-                <label>Evt. bemærkninger</label>
-                <input class="form-control" height="200px" type="textarea" name="comments">
-                <br>
+
                 <%}%>
+                <label>Evt. bemærkninger</label>
+                <textarea class="form-control" name="comments" rows="4" ></textarea>
+                <br>
                 <input class="btn btn-primary" type="submit" value="SEND FORSPØRGSEL">
 
                 <br>

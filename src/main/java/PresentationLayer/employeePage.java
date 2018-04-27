@@ -6,18 +6,19 @@
 package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.requestException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author martin
+ * @author juanni420
  */
-public class flatRoofRequest extends Command{
+public class employeePage extends Command{
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, requestException {
+        return "employeepage";
     }
     
 }

@@ -38,13 +38,25 @@
                 <form name="register" action="FrontController" method="POST">
                     <input class="form-control" type="hidden" name="command" value="register">
                     Email:<br>
-                    <input class="form-control" type="text" name="email" value="someone@nowhere.com">
+                    <input class="form-control" type="text" name="email">
+                    <br>
+                    Name:<br>
+                    <input class="form-control" type="text" name="name">
+                    <br>
+                    Address:<br>
+                    <input class="form-control" type="text" name="address">
+                    <br>
+                    City:<br>
+                    <input class="form-control" type="text" name="city">
+                    <br>
+                    Phone:<br>
+                    <input class="form-control" type="number" name="phone">
                     <br>
                     Password:<br>
-                    <input class="form-control" type="password" name="password1" value="sesam">
+                    <input class="form-control" type="password" name="password1">
                     <br>
                     Retype Password:<br>
-                    <input class="form-control" type="password" name="password2" value="sesam">
+                    <input class="form-control" type="password" name="password2">
                     <br>
                     <input class="btn btn-primary" type="submit" value="Submit">
                 </form>
@@ -52,7 +64,7 @@
 
 
             <% String error = (String) request.getAttribute("error");
-            if (error != null) {%>
+                if (error != null) {%>
             <H2>Error!!</h2>
             <p><%= error%>
                 <% }
