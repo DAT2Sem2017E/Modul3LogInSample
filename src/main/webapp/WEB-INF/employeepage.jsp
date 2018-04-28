@@ -4,6 +4,7 @@
     Author     : kasper
 --%>
 
+<%@page import="java.util.Collections"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,7 +23,7 @@
             You are now logged in as a EMPLOYEE of our wonderful site.
 
             <div class="container">
-                <div class="row">
+                <div class="row" style='float:left;'>
                     <a class="btn btn-primary" href="FrontController?command=orderList">Se Ordre</a>
                     <button value="Admin Varer" class="btn btn-primary">Tilføj Varer</button>
                     <button value="Admin Varer" class="btn btn-primary">Ændre Varer</button>
@@ -34,6 +35,7 @@
                 <%
                     if (request.getSession().getAttribute("orderList") != null) {
                         ArrayList<Order> orders = (ArrayList<Order>) request.getSession().getAttribute("orderList");
+                        Collections.reverse(orders);
                 %>
 
                 <table style="width:100%;">
@@ -45,6 +47,7 @@
                         <th>Shed width</th>
                         <th>Shed length</th>
                         <th>User ID</th>
+                        <th></th>
                         <th>Status</th>
                         <th>Comment</th>
                     </tr>
@@ -59,7 +62,8 @@
                         <td><%=currOrder.getShedWidth()%></td>
                         <td><%=currOrder.getShedLength()%></td>
                         <td><%=currOrder.getUserId()%></td>
-                        <td><%=currOrder.getStatus()%></td>
+                        <td><input type="checkbox" name="statusBox" value="<%=currOrder.getId()%>"></td> <!-- maybe not how we should do it? -->
+                        <td><%=currOrder.getStatusAsText()%></td>
                         <td><%=currOrder.getComment()%></td>
                     </tr>
                     <%}

@@ -23,8 +23,8 @@ public class LogicFacade {
         return user;
     }
 
-    public static boolean createOrder(int width, int length, int roofId, int roofPitch, int shedWidth, int shedLength, int userId, int status, boolean isConfirmed, String comments) throws requestException {
-        Order order = new Order(width, length, roofId, roofPitch, shedWidth, shedLength, userId, status, isConfirmed, comments);
+    public static boolean createOrder(int width, int length, int roofId, int roofPitch, int shedWidth, int shedLength, int userId, int status, String comments) throws requestException {
+        Order order = new Order(width, length, roofId, roofPitch, shedWidth, shedLength, userId, status, comments);
         return OrderMapper.createOrder(order);
     }
 

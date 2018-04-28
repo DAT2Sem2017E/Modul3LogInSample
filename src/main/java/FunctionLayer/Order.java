@@ -9,7 +9,9 @@ package FunctionLayer;
  *
  * @author martin
  */
-public class Order {
+public class Order
+{
+
     private int id;
     private int width;
     private int length;
@@ -20,23 +22,9 @@ public class Order {
     private int userId;
     private int status;
     private String comment;
-    private Boolean isConfirmed;
 
-
-    public Order(int width, int length, int roofId, int roofPitch, int shedWidth, int shedLength, int userId, int status, Boolean isConfirmed, String comments) {
-        this.width = width;
-        this.length = length;
-        this.roofId = roofId;
-        this.roofPitch = roofPitch;
-        this.shedWidth = shedWidth;
-        this.shedLength = shedLength;
-        this.userId = userId;
-        this.status = status;
-        this.isConfirmed = isConfirmed;
-        this.comment = comments;
-    }
-    
-    public Order(int id, int width, int length, int roofId, int shedWidth, int shedLength, int userId, int status, String comment) {
+    public Order(int id, int width, int length, int roofId, int shedWidth, int shedLength, int userId, int status, String comment)
+    {
         this.id = id;
         this.width = width;
         this.length = length;
@@ -48,105 +36,127 @@ public class Order {
         this.comment = comment;
     }
 
-    public int getRoofPitch() {
+    public int getRoofPitch()
+    {
         return roofPitch;
     }
 
-    public void setRoofPitch(int roofPitch) {
+    public void setRoofPitch(int roofPitch)
+    {
         this.roofPitch = roofPitch;
     }
 
-    
-
-    public Boolean getIsConfirmed() {
-        return isConfirmed;
-    }
-
-    public void setIsConfirmed(Boolean isConfirmed) {
-        this.isConfirmed = isConfirmed;
-    }
-
-    public String getComments() {
+    public String getComments()
+    {
         return comment;
     }
 
-    public void setComments(String comments) {
+    public void setComments(String comments)
+    {
         this.comment = comments;
     }
 
-    
-
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public int getWidth() {
+    public int getWidth()
+    {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(int width)
+    {
         this.width = width;
     }
 
-    public int getLength() {
+    public int getLength()
+    {
         return length;
     }
 
-    public void setLength(int length) {
+    public void setLength(int length)
+    {
         this.length = length;
     }
 
-    public int getRoofId() {
+    public int getRoofId()
+    {
         return roofId;
     }
 
-    public void setRoof(int roofId) {
+    public void setRoof(int roofId)
+    {
         this.roofId = roofId;
     }
 
-    public int getShedWidth() {
+    public int getShedWidth()
+    {
         return shedWidth;
     }
 
-    public void setShedWidth(int shedWidth) {
+    public void setShedWidth(int shedWidth)
+    {
         this.shedWidth = shedWidth;
     }
 
-    public int getShedLength() {
+    public int getShedLength()
+    {
         return shedLength;
     }
 
-    public void setShedLength(int shedLength) {
+    public void setShedLength(int shedLength)
+    {
         this.shedLength = shedLength;
     }
 
-    public int getUserId() {
+    public int getUserId()
+    {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(int userId)
+    {
         this.userId = userId;
     }
 
-    public int getStatus() {
+    public int getStatus()
+    {
         return status;
     }
 
-    public void setStatus(int status) {
+    public String getStatusAsText()
+    {
+        switch(status){
+            case 0:
+                return "Unconfirmed";
+            case 1:
+                return "Confirmed";
+            case 2:
+                return "Closed";   
+        }
+        return "null";
+    }
+    
+    public void setStatus(int status)
+    {
         this.status = status;
     }
 
-    public String getComment() {
+    public String getComment()
+    {
         return comment;
     }
 
-    public void setComment(String comment) {
+    public void setComment(String comment)
+    {
         this.comment = comment;
     }
-    
-    
+
 }
