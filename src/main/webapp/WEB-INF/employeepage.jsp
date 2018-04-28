@@ -32,39 +32,40 @@
             <br>
             <div class="row row1">
                 <%
-                    if(request.getSession().getAttribute("orderList") != null) {
-                        ArrayList<Order> orders = (ArrayList<Order>)request.getSession().getAttribute("orderList");
-
-                        out.print("<table style=\"width:100%\">");
-                        out.print("<tr>");
-                        out.print("<th>ID</th>");
-                        out.print("<th>Width</th>");
-                        out.print("<th>Length</th>");
-                        out.print("<th>roof ID</th>");
-                        out.print("<th>Shed width</th>");
-                        out.print("<th>Shed length</th>");
-                        out.print("<th>User ID</th>");
-                        out.print("<th>Status</th>");
-                        out.print("<th>Comment</th>");
-                        out.print("</tr>");
-                        
-                        
-                        for (Order currOrder: orders) {
-
-                            out.print("<tr>");
-                            out.print("<td>" + currOrder.getId() +"</td>");
-                            out.print("<td>" + currOrder.getWidth() +"</td>");
-                            out.print("<td>" + currOrder.getLength() +"</td>");
-                            out.print("<td>" + currOrder.getRoofId() +"</td>");
-                            out.print("<td>" + currOrder.getShedWidth() +"</td>");
-                            out.print("<td>" + currOrder.getShedLength() +"</td>");
-                            out.print("<td>" + currOrder.getUserId() +"</td>");
-                            out.print("<td>" + currOrder.getStatus() +"</td>");
-                            out.print("<td>" + currOrder.getComment() +"</td>");
-                            out.print("</tr>");
-                        }
-                    }
+                    if (request.getSession().getAttribute("orderList") != null) {
+                        ArrayList<Order> orders = (ArrayList<Order>) request.getSession().getAttribute("orderList");
                 %>
+
+                <table style="width:100%;">
+                    <tr>
+                        <th>ID</th>
+                        <th>Width</th>
+                        <th>Length</th>
+                        <th>roof ID</th>
+                        <th>Shed width</th>
+                        <th>Shed length</th>
+                        <th>User ID</th>
+                        <th>Status</th>
+                        <th>Comment</th>
+                    </tr>
+
+
+                    <%for (Order currOrder : orders) {%>
+                    <tr>
+                        <td><%=currOrder.getId()%></td>
+                        <td><%=currOrder.getWidth()%></td>
+                        <td><%=currOrder.getLength()%></td>
+                        <td><%=currOrder.getRoofId()%></td>
+                        <td><%=currOrder.getShedWidth()%></td>
+                        <td><%=currOrder.getShedLength()%></td>
+                        <td><%=currOrder.getUserId()%></td>
+                        <td><%=currOrder.getStatus()%></td>
+                        <td><%=currOrder.getComment()%></td>
+                    </tr>
+                    <%}
+                        }%>
+
+                </table>
             </div>
         </div>
     </body>
