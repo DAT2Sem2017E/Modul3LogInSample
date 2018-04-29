@@ -17,12 +17,14 @@ import FunctionLayer.requestException;
  *
  * @author martin
  */
-public class OrderMapper {
+public class OrderMapper
+{
 
-    public static boolean createOrder(Order order) throws requestException {
+    public static boolean createOrder(Order order) throws requestException
+    {
         try {
             Connection conn = Connector.connection();
-            String SQL = "INSERT INTO `Fog-CarportsDB`.`orders` (`width`, `length`, `fkRoofId`, `roofPitch`, `shedWidth`, `shedLength`, `fkUserId`, `isConfirmed`, `comments`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String SQL = "INSERT INTO `Fog-CarportsDB`.`orders` (`width`, `length`, `fkRoofId`, `roofPitch`, `shedWidth`, `shedLength`, `fkUserId`, `status`, `comments`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(SQL);
             ps.setInt(1, order.getWidth());
             ps.setInt(2, order.getLength());
@@ -31,7 +33,7 @@ public class OrderMapper {
             ps.setInt(5, order.getShedWidth());
             ps.setInt(6, order.getShedLength());
             ps.setInt(7, order.getUserId());
-            ps.setBoolean(8, order.getIsConfirmed());
+            ps.setInt(8, order.getStatus());
             ps.setString(9, order.getComments());
             ps.executeUpdate();
             return true;
@@ -41,17 +43,20 @@ public class OrderMapper {
     }
 
     /**
-     * Fetches every order from the database and returns them in an ArrayList ordered descending by id.
+     * Fetches every order from the database and returns them in an ArrayList
+     * ordered descending by id.
+     *
      * @return ArrayList
      */
-    public static ArrayList<Order> getOrders() {
-        
+    public static ArrayList<Order> getOrders()
+    {
+
         try {
             ArrayList<Order> orders = new ArrayList<>();
             Connection con = Connector.connection();
             String SQL = "SELECT * FROM orders ORDER BY id DESC";
             PreparedStatement ps = con.prepareStatement(SQL);
-            
+
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
@@ -61,19 +66,32 @@ public class OrderMapper {
                 int shedWidth = rs.getInt("shedWidth");
                 int shedlength = rs.getInt("shedLength");
                 int userId = rs.getInt("fkUserId");
-                int status = rs.getInt("isConfirmed");
+                int status = rs.getInt("status");
                 String comment = rs.getString("comments");
 
                 orders.add(new Order(id, width, length, roofId, shedWidth, shedlength, userId, status, comment));
 
             }
-            
+
             return orders;
         } catch (ClassNotFoundException | SQLException e) {
-            
+
             //TODO: Custom exception
             e.printStackTrace();
             return null;
-        }  
+        }
+    }
+
+    public static boolean updateOrderStatus(int newStatus, int id) throws requestException
+    {
+        try {
+            Connection conn = Connector.connection();
+            String SQL = "UPDATE `Fog-CarportsDB`.`orders` SET status =" + newStatus + "WHERE id =" + id;
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException | ClassNotFoundException exception) {
+            throw new requestException(exception.getMessage());
+        }
     }
 }
