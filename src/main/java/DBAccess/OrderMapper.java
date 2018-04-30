@@ -103,7 +103,7 @@ public class OrderMapper
         
         try {
             Connection conn = Connector.connection();
-            String SQL = "DELETE FROM Fog-CarportsDB.orders WHERE orders.id =? ";
+            String SQL = "DELETE FROM orders WHERE orders.id =? ";
             PreparedStatement ps = conn.prepareStatement(SQL);
             ps.setInt(1, id);
             ps.executeUpdate();
