@@ -82,16 +82,20 @@ public class OrderMapper
         }
     }
 
-    public static boolean updateOrderStatus(int newStatus, int id) throws requestException
+    public static boolean updateOrderStatus(int newStatus, int id)
     {
         try {
             Connection conn = Connector.connection();
-            String SQL = "UPDATE `Fog-CarportsDB`.`orders` SET status =" + newStatus + "WHERE id =" + id;
+            String SQL = "UPDATE orders SET status = " + newStatus + " WHERE id = " + id;
             PreparedStatement ps = conn.prepareStatement(SQL);
             ps.executeUpdate();
             return true;
-        } catch (SQLException | ClassNotFoundException exception) {
-            throw new requestException(exception.getMessage());
+            
+        } catch (ClassNotFoundException | SQLException e) {
+
+            //TODO: Custom exception
+            e.printStackTrace();
+            return false;
         }
     }
     
