@@ -35,7 +35,7 @@
                 <%
                     if (request.getSession().getAttribute("orderList") != null) {
                         ArrayList<Order> orders = (ArrayList<Order>) request.getSession().getAttribute("orderList");
-                        Collections.reverse(orders);
+                        //Collections.reverse(orders);
                 %>
 
                 <table style="width:100%;">
@@ -47,8 +47,8 @@
                         <th>Shed width</th>
                         <th>Shed length</th>
                         <th>User ID</th>
-                        <th></th>
                         <th>Status</th>
+                        <th></th>
                         <th>Comment</th>
                     </tr>
 
@@ -62,8 +62,8 @@
                         <td><%=currOrder.getShedWidth()%></td>
                         <td><%=currOrder.getShedLength()%></td>
                         <td><%=currOrder.getUserId()%></td>
-                        <td><input type="checkbox" name="statusBox" value="<%=currOrder.getId()%>"></td> <!-- maybe not how we should do it? -->
                         <td><%=currOrder.getStatusAsText()%></td>
+                        <td><a href="FrontController?command=updateOrderStatus&id=<%=currOrder.getId()%>&status=<%=currOrder.getStatus()%>">Update Status</a></td>
                         <td><%=currOrder.getComment()%></td>
                     </tr>
                     <%}

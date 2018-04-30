@@ -43,4 +43,8 @@ public class LogicFacade {
         return OrderMapper.getOrders();
     }
 
+    public static boolean UpdateOrderStatus(int status, int orderId)
+    {
+        return OrderMapper.updateOrderStatus(status, orderId);
+    }
 }

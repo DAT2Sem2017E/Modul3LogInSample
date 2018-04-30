@@ -54,7 +54,7 @@ public class OrderMapper
         try {
             ArrayList<Order> orders = new ArrayList<>();
             Connection con = Connector.connection();
-            String SQL = "SELECT * FROM orders ORDER BY id ASC";
+            String SQL = "SELECT * FROM orders ORDER BY id DESC";
             PreparedStatement ps = con.prepareStatement(SQL);
 
             ResultSet rs = ps.executeQuery();
@@ -82,16 +82,20 @@ public class OrderMapper
         }
     }
 
-    public static boolean updateOrderStatus(int newStatus, int id) throws requestException
+    public static boolean updateOrderStatus(int newStatus, int id)
     {
         try {
             Connection conn = Connector.connection();
-            String SQL = "UPDATE `Fog-CarportsDB`.`orders` SET status =" + newStatus + "WHERE id =" + id;
+            String SQL = "UPDATE orders SET status = " + newStatus + " WHERE id = " + id;
             PreparedStatement ps = conn.prepareStatement(SQL);
             ps.executeUpdate();
             return true;
-        } catch (SQLException | ClassNotFoundException exception) {
-            throw new requestException(exception.getMessage());
+            
+        } catch (ClassNotFoundException | SQLException e) {
+
+            //TODO: Custom exception
+            e.printStackTrace();
+            return false;
         }
     }
 }
