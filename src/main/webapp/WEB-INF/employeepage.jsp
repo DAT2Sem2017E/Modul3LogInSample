@@ -35,7 +35,7 @@
                 <%
                     if (request.getSession().getAttribute("orderList") != null) {
                         ArrayList<Order> orders = (ArrayList<Order>) request.getSession().getAttribute("orderList");
-                        Collections.reverse(orders);
+                        //Collections.reverse(orders);
                 %>
 
                 <table style="width:100%;">

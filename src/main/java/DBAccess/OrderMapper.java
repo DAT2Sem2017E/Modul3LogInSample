@@ -54,7 +54,7 @@ public class OrderMapper
         try {
             ArrayList<Order> orders = new ArrayList<>();
             Connection con = Connector.connection();
-            String SQL = "SELECT * FROM orders ORDER BY id ASC";
+            String SQL = "SELECT * FROM orders ORDER BY id DESC";
             PreparedStatement ps = con.prepareStatement(SQL);
 
             ResultSet rs = ps.executeQuery();
