@@ -38,20 +38,21 @@
                         //Collections.reverse(orders);
                 %>
 
-                <table style="width:100%;">
-                    <tr>
-                        <th>ID</th>
-                        <th>Width</th>
-                        <th>Length</th>
-                        <th>roof ID</th>
-                        <th>Shed width</th>
-                        <th>Shed length</th>
-                        <th>User ID</th>
-                        <th>Status</th>
-                        <th></th>
-                        <th>Comment</th>
-                    </tr>
-
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Width</th>
+                            <th>Length</th>
+                            <th>roof ID</th>
+                            <th>Shed width</th>
+                            <th>Shed length</th>
+                            <th>User ID</th>
+                            <th>Status</th>
+                            <th></th>
+                            <th>Comment</th>
+                        </tr>
+                    </thead>
 
                     <%for (Order currOrder : orders) {%>
                     <tr>
@@ -63,7 +64,7 @@
                         <td><%=currOrder.getShedLength()%></td>
                         <td><%=currOrder.getUserId()%></td>
                         <td><%=currOrder.getStatusAsText()%></td>
-                        <td><a href="FrontController?command=updateOrderStatus&id=<%=currOrder.getId()%>&status=<%=currOrder.getStatus()%>">Update Status</a></td>
+                        <td><a class="btn btn-primary" href="FrontController?command=updateOrderStatus&id=<%=currOrder.getId()%>&status=<%=currOrder.getStatus()%>">Update Status</a></td>
                         <td><%=currOrder.getComment()%></td>
                     </tr>
                     <%}
