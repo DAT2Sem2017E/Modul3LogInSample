@@ -4,6 +4,7 @@
     Author     : kasper
 --%>
 
+<%@page import="FunctionLayer.User"%>
 <%@page import="java.util.Collections"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="FunctionLayer.Order"%>
@@ -16,10 +17,11 @@
         <title>Employee home page</title>
     </head>
     <%@include file="includes/nav.jsp" %>
+    <% User user = (User) request.getSession().getAttribute("user");%>
     <body>
         <div class="container">
 
-            <h1>Hello <%=request.getSession().getAttribute("email")%> </h1>
+            <h1>Hello <%= user.getName() %> </h1>
             You are now logged in as a EMPLOYEE of our wonderful site.
 
             <div class="container">
@@ -42,15 +44,15 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Width</th>
-                            <th>Length</th>
-                            <th>roof ID</th>
-                            <th>Shed width</th>
-                            <th>Shed length</th>
-                            <th>User ID</th>
+                            <th>Bredde</th>
+                            <th>Længde</th>
+                            <th>Tag</th>
+                            <th>Skur bredde</th>
+                            <th>Skur længde</th>
+                            <th>Bruger</th>
                             <th>Status</th>
                             <th></th>
-                            <th>Comment</th>
+                            <th>Kommentar</th>
                         </tr>
                     </thead>
 

@@ -135,11 +135,11 @@ public class Order
     {
         switch(status){
             case 0:
-                return "Unconfirmed";
+                return "Forspørgsel";
             case 1:
-                return "Confirmed";
+                return "Bekræftet";
             case 2:
-                return "Closed";   
+                return "Lukket";   
         }
         return "null";
     }
@@ -158,5 +158,6 @@ public class Order
     {
         this.comment = comment;
     }
+    
 
 }
