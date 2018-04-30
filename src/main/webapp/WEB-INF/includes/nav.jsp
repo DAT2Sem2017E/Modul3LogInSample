@@ -25,7 +25,7 @@
                 <%
                 } else if (request.getSession().getAttribute("role").equals("customer")) {
                 %>
-            <li><a href="#">Customer Page</a></li> 
+            <li><a href="FrontController?command=customerPage">Customer Page</a></li> 
                 <%
                         }
                     }
