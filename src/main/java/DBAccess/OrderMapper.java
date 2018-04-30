@@ -94,4 +94,19 @@ public class OrderMapper
             throw new requestException(exception.getMessage());
         }
     }
+    
+    public static boolean deleteOrder(int id) throws requestException{
+        
+        try {
+            Connection conn = Connector.connection();
+            String SQL = "DELETE FROM Fog-CarportsDB.orders WHERE orders.id =? ";
+            PreparedStatement ps = conn.prepareStatement(SQL);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException | ClassNotFoundException exception) {
+            throw new requestException(exception.getMessage());
+        }
+        
+    }
 }

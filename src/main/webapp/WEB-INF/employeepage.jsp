@@ -65,6 +65,11 @@
                         <td><input type="checkbox" name="statusBox" value="<%=currOrder.getId()%>"></td> <!-- maybe not how we should do it? -->
                         <td><%=currOrder.getStatusAsText()%></td>
                         <td><%=currOrder.getComment()%></td>
+                        <td><form name="deleteOrder" action="FrontController" method="POST">
+                                <input type="hidden" name="command" value="deleteOrder">
+                                <input type="hidden" name="id" value="<%=currOrder.getId()%>">
+                                <input type="submit" value="Delete">
+                            </form></td>
                     </tr>
                     <%}
                         }%>
