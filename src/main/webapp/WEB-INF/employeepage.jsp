@@ -4,6 +4,8 @@
     Author     : kasper
 --%>
 
+<%@page import="FunctionLayer.User"%>
+<%@page import="java.util.Collections"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,14 +17,15 @@
         <title>Employee home page</title>
     </head>
     <%@include file="includes/nav.jsp" %>
+    <% User user = (User) request.getSession().getAttribute("user");%>
     <body>
         <div class="container">
 
-            <h1>Hello <%=request.getSession().getAttribute("email")%> </h1>
+            <h1>Hello <%= user.getName() %> </h1>
             You are now logged in as a EMPLOYEE of our wonderful site.
 
             <div class="container">
-                <div class="row">
+                <div class="row" style='float:left;'>
                     <a class="btn btn-primary" href="FrontController?command=orderList">Se Ordre</a>
                     <button value="Admin Varer" class="btn btn-primary">Tilføj Varer</button>
                     <button value="Admin Varer" class="btn btn-primary">Ændre Varer</button>
@@ -32,39 +35,44 @@
             <br>
             <div class="row row1">
                 <%
-                    if(request.getSession().getAttribute("orderList") != null) {
-                        ArrayList<Order> orders = (ArrayList<Order>)request.getSession().getAttribute("orderList");
-
-                        out.print("<table style=\"width:100%\">");
-                        out.print("<tr>");
-                        out.print("<th>ID</th>");
-                        out.print("<th>Width</th>");
-                        out.print("<th>Length</th>");
-                        out.print("<th>roof ID</th>");
-                        out.print("<th>Shed width</th>");
-                        out.print("<th>Shed length</th>");
-                        out.print("<th>User ID</th>");
-                        out.print("<th>Status</th>");
-                        out.print("<th>Comment</th>");
-                        out.print("</tr>");
-                        
-                        
-                        for (Order currOrder: orders) {
-
-                            out.print("<tr>");
-                            out.print("<td>" + currOrder.getId() +"</td>");
-                            out.print("<td>" + currOrder.getWidth() +"</td>");
-                            out.print("<td>" + currOrder.getLength() +"</td>");
-                            out.print("<td>" + currOrder.getRoofId() +"</td>");
-                            out.print("<td>" + currOrder.getShedWidth() +"</td>");
-                            out.print("<td>" + currOrder.getShedLength() +"</td>");
-                            out.print("<td>" + currOrder.getUserId() +"</td>");
-                            out.print("<td>" + currOrder.getStatus() +"</td>");
-                            out.print("<td>" + currOrder.getComment() +"</td>");
-                            out.print("</tr>");
-                        }
-                    }
+                    if (request.getSession().getAttribute("orderList") != null) {
+                        ArrayList<Order> orders = (ArrayList<Order>) request.getSession().getAttribute("orderList");
+                        //Collections.reverse(orders);
                 %>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Bredde</th>
+                            <th>Længde</th>
+                            <th>Tag</th>
+                            <th>Skur bredde</th>
+                            <th>Skur længde</th>
+                            <th>Bruger</th>
+                            <th>Status</th>
+                            <th></th>
+                            <th>Kommentar</th>
+                        </tr>
+                    </thead>
+
+                    <%for (Order currOrder : orders) {%>
+                    <tr>
+                        <td><%=currOrder.getId()%></td>
+                        <td><%=currOrder.getWidth()%></td>
+                        <td><%=currOrder.getLength()%></td>
+                        <td><%=currOrder.getRoofId()%></td>
+                        <td><%=currOrder.getShedWidth()%></td>
+                        <td><%=currOrder.getShedLength()%></td>
+                        <td><%=currOrder.getUserId()%></td>
+                        <td><%=currOrder.getStatusAsText()%></td>
+                        <td><a class="btn btn-primary" href="FrontController?command=updateOrderStatus&id=<%=currOrder.getId()%>&status=<%=currOrder.getStatus()%>">Update Status</a></td>
+                        <td><%=currOrder.getComment()%></td>
+                    </tr>
+                    <%}
+                        }%>
+
+                </table>
             </div>
         </div>
     </body>

@@ -63,7 +63,7 @@ public class carportRequest extends Command {
                 user = LogicFacade.createUser(email, "1234", name, address, phone, city);
                 userId = user.getId();
             }
-            if (LogicFacade.createOrder(width, length, roofId, roofPitch, shedWidth, shedLength, userId, 0, false, comments) == true) {
+            if (LogicFacade.createOrder(width, length, roofId, roofPitch, shedWidth, shedLength, userId, 0, comments) == true) {
                 return "success";
             } else {
                 return "error";
