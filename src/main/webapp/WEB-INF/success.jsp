@@ -16,6 +16,16 @@
     <body>
         <div class="container">
             <h1 class="text-center">Din forspørgsel er modtaget!</h1>
+            
+            <%
+            if (session.getAttribute("svgSide") != null) {
+            %>
+            <svg width="75%" viewBox="0 0 30000 30000">
+            <%=request.getSession().getAttribute("svgSide")%>
+            </svg>
+            <%
+            }
+            %>
         </div>
     </body>
 </html>
