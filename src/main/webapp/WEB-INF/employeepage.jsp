@@ -18,10 +18,16 @@
     </head>
     <%@include file="includes/nav.jsp" %>
     <% User user = (User) request.getSession().getAttribute("user");%>
+    <%
+        User customer = null;
+        if (request.getAttribute("customer") != null) {
+            customer = (User) request.getAttribute("customer");
+        }
+    %>
     <body>
         <div class="container">
 
-            <h1>Hello <%= user.getName() %> </h1>
+            <h1>Hello <%= user.getName()%> </h1>
             You are now logged in as a EMPLOYEE of our wonderful site.
 
             <div class="container">
@@ -56,7 +62,8 @@
                         </tr>
                     </thead>
 
-                    <%for (Order currOrder : orders) {%>
+                    <%int i = 0;
+                        for (Order currOrder : orders) {%>
                     <tr>
                         <td><%=currOrder.getId()%></td>
                         <td><%=currOrder.getWidth()%></td>
@@ -64,16 +71,45 @@
                         <td><%=currOrder.getRoof().getName()%></td>
                         <td><%=currOrder.getShedWidth()%></td>
                         <td><%=currOrder.getShedLength()%></td>
-                        <td><%=currOrder.getUser().getName()%></td>
+                        <td><a class="btn btn-primary" data-toggle="modal" data-target="#myModal<%=i%>"><%=currOrder.getUser().getName()%></a></td>
                         <td><%=currOrder.getStatusAsText()%></td>
                         <td><a class="btn btn-primary" href="FrontController?command=updateOrderStatus&id=<%=currOrder.getId()%>&status=<%=currOrder.getStatus()%>">Update Status</a></td>
                         <td><%=currOrder.getComment()%></td>
                         <td><a class="btn btn-primary" onclick="return confirm('Er du sikker?')" href="FrontController?command=deleteOrder&id=<%=currOrder.getId()%>">Delete Order</a></td>
                     </tr>
-                    <%}
+                    <div id="myModal<%=i%>" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Bruger Info</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Navn: <%=currOrder.getUser().getName()%> </p>
+                                    <p>Email: <%=currOrder.getUser().getEmail()%></p>
+                                    <p>Telefon: <%=currOrder.getUser().getPhone()%></p>
+                                    <p>Addresse: <%=currOrder.getUser().getAddress()%></p>
+                                    <p>By: <%=currOrder.getUser().getCity()%></p>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <%i++;
+                            }
                         }%>
 
                 </table>
+
+
+
+
             </div>
         </div>
     </body>
