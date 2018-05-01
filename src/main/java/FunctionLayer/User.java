@@ -16,6 +16,19 @@ public class User {
         this.city = city;
     }
 
+    public User(int id, String email, String password, String role, String address, String name, int phone, String city) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.address = address;
+        this.name = name;
+        this.phone = phone;
+        this.city = city;
+    }
+    
+    
+
     private int id; // just used to demo retrieval of autogen keys in UserMapper
     private String email;
     private String password; // Should be hashed and all

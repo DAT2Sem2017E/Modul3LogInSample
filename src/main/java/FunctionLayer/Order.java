@@ -22,19 +22,38 @@ public class Order
     private int userId;
     private int status;
     private String comment;
+    private User user;
+    private Roof roof;
 
-    public Order(int id, int width, int length, int roofId, int shedWidth, int shedLength, int userId, int status, String comment)
+    public Order(int id, int width, int length, Roof roof, int roofPitch, int shedWidth, int shedLength, User user, int status, String comment)
     {
         this.id = id;
         this.width = width;
         this.length = length;
+        this.roof = roof;
+        this.roofPitch = roofPitch;
+        this.shedWidth = shedWidth;
+        this.shedLength = shedLength;
+        this.user = user;
+        this.status = status;
+        this.comment = comment;
+    }
+
+    public Order(int width, int length, int roofId, int roofPitch, int shedWidth, int shedLength, int userId, int status, String comment) {
+        this.width = width;
+        this.length = length;
         this.roofId = roofId;
+        this.roofPitch = roofPitch;
         this.shedWidth = shedWidth;
         this.shedLength = shedLength;
         this.userId = userId;
         this.status = status;
         this.comment = comment;
     }
+    
+    
+    
+    
 
     public int getRoofPitch()
     {
@@ -158,6 +177,23 @@ public class Order
     {
         this.comment = comment;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Roof getRoof() {
+        return roof;
+    }
+
+    public void setRoof(Roof roof) {
+        this.roof = roof;
+    }
+    
     
 
 }

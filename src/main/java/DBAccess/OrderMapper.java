@@ -6,6 +6,8 @@
 package DBAccess;
 
 import FunctionLayer.Order;
+import FunctionLayer.Roof;
+import FunctionLayer.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -54,7 +56,7 @@ public class OrderMapper
         try {
             ArrayList<Order> orders = new ArrayList<>();
             Connection con = Connector.connection();
-            String SQL = "SELECT * FROM orders ORDER BY id DESC";
+            String SQL = "SELECT * FROM orders INNER JOIN roof ON orders.fkRoofId = roof.id INNER JOIN user ON orders.fkUserId = user.id ORDER BY orders.id DESC";
             PreparedStatement ps = con.prepareStatement(SQL);
 
             ResultSet rs = ps.executeQuery();
@@ -63,13 +65,34 @@ public class OrderMapper
                 int width = rs.getInt("width");
                 int length = rs.getInt("length");
                 int roofId = rs.getInt("fkRoofId");
+                int roofPitch = rs.getInt("roofPitch");
                 int shedWidth = rs.getInt("shedWidth");
                 int shedlength = rs.getInt("shedLength");
                 int userId = rs.getInt("fkUserId");
                 int status = rs.getInt("status");
                 String comment = rs.getString("comments");
+                
+                //user
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                String role = rs.getString("role");
+                String address = rs.getString("address");
+                String name = rs.getString("user.name");
+                int phone = rs.getInt("phone");
+                String city = rs.getString("city");
+                User user = new User(userId, email, password, role, address, name, phone, city);
+                
+                //roof
+                String roofName = rs.getString("roof.name");
+                int price = rs.getInt("price");
+                Boolean forRaisedRoof = rs.getBoolean("forRaisedRoof");
+                Roof roof = new Roof(roofId, roofName, price, forRaisedRoof);
+                
+                orders.add(new Order(id, width, length, roof, roofPitch, shedWidth, shedlength, user, status, comment));
+                
+                
 
-                orders.add(new Order(id, width, length, roofId, shedWidth, shedlength, userId, status, comment));
+        
 
             }
 
