@@ -23,7 +23,7 @@ public class carportRequest extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws requestException, LoginSampleException {
         try {
-            CarportSideSketcher cs = new CarportSideSketcher();
+            //CarportSideSketcher cs = new CarportSideSketcher();
             HttpSession session = request.getSession();
 
             int width = Integer.parseInt(request.getParameter("width"));
@@ -47,7 +47,7 @@ public class carportRequest extends Command {
             int userId = 0;
             User user = null;
             
-            session.setAttribute("svgSide", cs.CarportSideSketcher(length, 250));
+            session.setAttribute("svgSide", new CarportSideSketcher().CarportSideSketcher(length, 250, shedWidth, shedLength));
             if (session.getAttribute("user") != null) {
                 user = (User) session.getAttribute("user");
                 userId = user.getId();
