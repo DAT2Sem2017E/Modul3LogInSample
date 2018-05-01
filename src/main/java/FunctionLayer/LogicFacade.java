@@ -42,6 +42,10 @@ public class LogicFacade {
     public static ArrayList<Order> getOrders() {
         return OrderMapper.getOrders();
     }
+    
+    public static boolean deleteOrder(int id) throws requestException{
+        return OrderMapper.deleteOrder(id);
+    }
 
     public static boolean UpdateOrderStatus(int status, int orderId)
     {

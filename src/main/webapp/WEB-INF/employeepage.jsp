@@ -68,6 +68,7 @@
                         <td><%=currOrder.getStatusAsText()%></td>
                         <td><a class="btn btn-primary" href="FrontController?command=updateOrderStatus&id=<%=currOrder.getId()%>&status=<%=currOrder.getStatus()%>">Update Status</a></td>
                         <td><%=currOrder.getComment()%></td>
+                        <td><a class="btn btn-primary" onclick="return confirm('Er du sikker?')" href="FrontController?command=deleteOrder&id=<%=currOrder.getId()%>">Delete Order</a></td>
                     </tr>
                     <%}
                         }%>
