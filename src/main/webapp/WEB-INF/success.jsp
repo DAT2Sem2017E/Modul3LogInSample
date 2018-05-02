@@ -26,6 +26,20 @@
             <%
             }
             %>
+
+            <br>
+            <br>
+            <br>
+            
+            <%
+            if (session.getAttribute("svgTop") != null) {
+            %>
+            <svg width="75%" viewBox="0 0 30000 30000">
+            <%=request.getSession().getAttribute("svgTop")%>
+            </svg>
+            <%
+            }
+            %>
         </div>
     </body>
 </html>

@@ -6,6 +6,7 @@
 package PresentationLayer;
 
 import FunctionLayer.CarportSideSketcher;
+import FunctionLayer.CarportTopSketch;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
@@ -48,6 +49,8 @@ public class carportRequest extends Command {
             User user = null;
             
             session.setAttribute("svgSide", new CarportSideSketcher().CarportSideSketcher(length, 250, shedWidth, shedLength));
+            session.setAttribute("svgTop", new CarportTopSketch().CarportTopSketcher(length, width, shedWidth, shedLength));
+            
             if (session.getAttribute("user") != null) {
                 user = (User) session.getAttribute("user");
                 userId = user.getId();
