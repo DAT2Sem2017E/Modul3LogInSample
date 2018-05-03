@@ -81,7 +81,7 @@ public class CarportTopSketch
     
     
     private String buildArrowheads() {
-        //Code for generating the arrowhead on the line that shows length
+        //Code for generating the arrowhead on the line that shows length and height
         return "<defs>\n" +
             "    <marker id=\"beginArrow\" \n" +
             "    	markerWidth=\"9\" markerHeight=\"9\" \n" +
