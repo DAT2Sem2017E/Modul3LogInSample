@@ -1,7 +1,7 @@
 <%-- 
-    Document   : customerpage
-    Created on : Aug 22, 2017, 2:33:37 PM
-    Author     : kasper
+    Document   : error
+    Created on : Apr 26, 2018, 9:48:11 AM
+    Author     : martin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,14 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Customer home page</title>
+        <title>Fejl!</title>
         <%@include file="includes/links.jsp" %>
     </head>
     <%@include file="includes/nav.jsp" %>
     <body>
         <div class="container">
-            <h1>Hello <%=request.getSession().getAttribute("email")%> </h1>
-            You are now logged in as a customer of our wonderful site.
+            <h1>Der skete en fejl! Din forspørgsel er ikke modtaget.</h1>
         </div>
     </body>
 </html>
